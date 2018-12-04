@@ -1,0 +1,160 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Thông tin tài sản</h4>
+        </div>
+        <div class="card-body">
+          <form *ngIf="1===1">
+            <div class="row">
+              <div class="col-md-1 pr-1"></div>
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label for="tenTaiSan">Tên tài sản <span class="error">*</span></label>
+                  <input #tenTaiSan type="text" id="tenTaiSan" name="tenTaiSan" class="form-control" [(ngModel)]="newTaiSan.tenTaiSan">
+                  <p *ngIf="newTaiSan.tenTaiSan === '' && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-1 pl-1"></div>
+              <div class="col-md-4 pr-1">
+
+                <div class="form-group">
+                  <label>Loại tài sản  <span class="error">*</span></label>
+                  <select class="form-control" name="loaiTaiSan" [(ngModel)]="newTaiSan.idLoaiTaiSan">
+                    <option value="0">Chọn loại tài sản</option>
+                    <option *ngFor="let item of loaiTaiSans" value="{{item.id}}">{{item.ten}}</option>
+                  </select>
+                  <p *ngIf="+newTaiSan.idLoaiTaiSan === 0 && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+                <div class="form-group">
+                  <label>Nhóm tài sản <span class="error">*</span></label>
+                  <select class="form-control" name="nhomTaiSan" [(ngModel)]="newTaiSan.idNhomTaiSan">
+                    <option value="0">Chọn nhóm tài sản</option>
+                    <option *ngFor="let item of nhomTaiSans" value="{{item.id}}">{{item.ten}}</option>
+                  </select>
+                  <p *ngIf="+newTaiSan.idNhomTaiSan === 0 && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+                <div class="form-group">
+                  <label>Đơn vị</label>
+                  <select class="form-control" name="donVi" (change)="updateSelectedDonVi($event.target.value)">
+                    <option value="0">Chọn đơn vị</option>
+                    <option *ngFor="let item of donVis" value="{{item.id}}">{{item.ten}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Phòng ban  <span class="error">*</span></label>
+                  <select class="form-control" name="phongBan" [(ngModel)]="newTaiSan.idPhongBan">
+                    <option value="0">Chọn phòng ban</option>
+                    <option *ngFor="let item of selectedDonVi.child" value="{{item.id}}">{{item.ten}}</option>
+                  </select>
+                  <p *ngIf="+newTaiSan.idPhongBan === 0 && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+                <div class="form-group">
+                  <label>Đơn vị tính  <span class="error">*</span></label>
+                  <select class="form-control" name="donViTinh" [(ngModel)]="newTaiSan.idDonViTinh">
+                    <option value="0">Chọn đơn vị tính</option>
+                    <option *ngFor="let item of donViTinhs" value="{{item.id}}">{{item.ten}}</option>
+                  </select>
+                  <p *ngIf="+newTaiSan.idDonViTinh === 0 && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+                <div class="form-group">
+                  <label>Số lượng</label>
+                  <input type="number" [min]="0" class="form-control" value="Creative Code Inc." (change)="addTaiSanCuThe($event.target.value)" [value]="newTaiSan.taiSanCuThe.length" name="soLuong">
+                </div>
+
+              </div>
+              <div class="col-md-2 pl-1"></div>
+              <div class="col-md-4 pl-1">
+                <div class="form-group">
+                  <label>Mã tài sản  <span class="error">*</span></label>
+                  <input type="text" name="maTaiSan" class="form-control" [(ngModel)]="newTaiSan.maTaiSan">
+                  <p *ngIf="newTaiSan.maTaiSan === '' && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+                <div class="form-group">
+                  <label>Mã thiết bị  <span class="error">*</span></label>
+                  <input type="text" name="maThietBi" class="form-control" [(ngModel)]="newTaiSan.maThietBi">
+                  <p *ngIf="newTaiSan.maThietBi === '' && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+                <div class="form-group">
+                  <label>Năm sử dụng  <span class="error">*</span></label>
+                  <input type="date" name="namSuDung" class="form-control" [(ngModel)]="newTaiSan.namSuDung">
+                </div>
+                <div class="form-group">
+                  <label>Thông số kỹ thuật  <span class="error">*</span></label>
+                  <textarea class="form-control" name="thongSoKyThuat" [(ngModel)]="newTaiSan.thongSoKyThuat"></textarea>
+                  <p *ngIf="newTaiSan.thongSoKyThuat === '' && saveClicked" class="error">Trường này là bắt buộc</p>
+                </div>
+              </div>
+              <div class="col-md-1 pl-1"></div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 pr-1" style="display: flex; flex-flow: row-reverse">
+              <div class="form-group group-function">
+                <button class="btn btn-lg btn-primary mr-1" routerLink="/tai-san/hien-thi-tai-san">Hủy bỏ</button>
+                <button class="btn btn-lg btn-info" (click)="luuTS()">Lưu</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Chi tiết tài sản</h5>
+        </div>
+        <div class="card-body">
+          <div *ngIf="1===1" class="table-responsive">
+            <table class="table table-ts-chi-tiet">
+              <thead class=" text-primary">
+              <th>#</th>
+              <th>Mã tài sản</th>
+              <th>Mã thiết bị</th>
+              <th>Tên tài sản</th>
+              <th>Năm sử dụng</th>
+              <th>Thông số kỹ thuật</th>
+              <th>Tỷ lệ chất lượng</th>
+              <th>Tình trạng</th>
+              <th>Ghi chú</th>
+              <th>Action</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of newTaiSan.taiSanCuThe; let i = index">
+                <td>{{i + 1}}</td>
+                <td><input type="text" name="maTaiSan{{i+1}}" [(ngModel)]="item.maTaiSan"></td>
+                <td><input type="text" name="maThietBi{{i+1}}" [(ngModel)]="item.maThietBi"></td>
+                <td><input type="text" name="tenTaiSan{{i+1}}" [(ngModel)]="item.tenTaiSan"></td>
+                <td><input type="date" name="namSuDung{{i+1}}" [(ngModel)]="item.namSuDung"></td>
+                <td><textarea name="thongSoKyThuat{{i+1}}" [(ngModel)]="item.thongSoKyThuat"></textarea></td>
+                <td><input type="number" name="tiLeChatLuong{{i+1}}" [(ngModel)]="item.tyLeChatLuong"></td>
+                <td>
+                  <select name="tinhTrang{{i+1}}" [(ngModel)]="item.tinhTrang">
+                    <option value="1">Mới</option>
+                    <option value="2">Secondhand</option>
+                  </select>
+                </td>
+                <td><textarea name="ghiChu{{i+1}}" [(ngModel)]="item.ghiChu"></textarea></td>
+                <td>
+                  <button class="btn btn-md btn-warning" (click)="removeTSCT(i)"><i class="now-ui-icons ui-1_simple-delete"></i></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.btn {
+  margin-right: 2px;
+}
+
+.now-ui-icons {
+  font-size: 22px;
+}
+
+tr:nth-child(2n + 1) {
+  background: white;
+}
+
+option {
+  font-size: 100%;
+  border: none;
+}
+.group-function {
+  display: flex;
+  flex-flow: row-reverse;
+}
+
+.pag-active {
+  color: white;
+  background: lightblue;
+}
+
+.pag-disable {
+  color: white;
+  background: lightgray;
+}
+
+.div-add {
+  display: flex;
+  flex-flow: column-reverse;
+}

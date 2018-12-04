@@ -1,11 +1,11 @@
 <div class="main-content">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-3">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-6 form-login">
             <div class="card card-user">
                 <div class="image">
-                    <img src="../assets/img/bg5.jpg" alt="...">
+                    <img src="assets/img/bg5.jpg" alt="...">
                 </div>
                 <div class="card-body">
                     <form>
@@ -13,18 +13,18 @@
                             <div class="col-md-12 px-1">
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Username" value="">
+                                    <input type="text" name="username" id="username" class="form-control" placeholder="" [(ngModel)]="loginModel.UserName" required>
                                 </div>
                             </div>
                             <div class="col-md-12 pl-1">
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Email">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="" [(ngModel)]="loginModel.Password" required>
                                 </div>
                             </div>
                             <div class="col-md-12 pl-1">
-                                <div class="form-group">
-                                    <button class="btn btn-block btn-warning" (click)="login()">Login</button>
+                                <div class="form-group" (click)="notifUserNameVaMatKhau()">
+                                    <button class="btn btn-block btn-warning" (click)="login()" [disabled]="!isValidated()">Login</button>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-3">
         </div>
     </div>
 </div>
