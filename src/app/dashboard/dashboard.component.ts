@@ -11,71 +11,71 @@ export class DashboardComponent implements OnInit {
   public lineBigDashboardChartType;
   public gradientStroke;
   public chartColor;
-  public canvas : any;
+  public canvas: any;
   public ctx;
   public gradientFill;
-  public lineBigDashboardChartData:Array<any>;
-  public lineBigDashboardChartOptions:any;
-  public lineBigDashboardChartLabels:Array<any>;
-  public lineBigDashboardChartColors:Array<any>
+  public lineBigDashboardChartData: Array<any>;
+  public lineBigDashboardChartOptions: any;
+  public lineBigDashboardChartLabels: Array<any>;
+  public lineBigDashboardChartColors: Array<any>
 
   public gradientChartOptionsConfiguration: any;
   public gradientChartOptionsConfigurationWithNumbersAndGrid: any;
 
   public lineChartType;
-  public lineChartData:Array<any>;
-  public lineChartOptions:any;
-  public lineChartLabels:Array<any>;
-  public lineChartColors:Array<any>
+  public lineChartData: Array<any>;
+  public lineChartOptions: any;
+  public lineChartLabels: Array<any>;
+  public lineChartColors: Array<any>
 
   public lineChartWithNumbersAndGridType;
-  public lineChartWithNumbersAndGridData:Array<any>;
-  public lineChartWithNumbersAndGridOptions:any;
-  public lineChartWithNumbersAndGridLabels:Array<any>;
-  public lineChartWithNumbersAndGridColors:Array<any>
+  public lineChartWithNumbersAndGridData: Array<any>;
+  public lineChartWithNumbersAndGridOptions: any;
+  public lineChartWithNumbersAndGridLabels: Array<any>;
+  public lineChartWithNumbersAndGridColors: Array<any>
 
   public lineChartGradientsNumbersType;
-  public lineChartGradientsNumbersData:Array<any>;
-  public lineChartGradientsNumbersOptions:any;
-  public lineChartGradientsNumbersLabels:Array<any>;
-  public lineChartGradientsNumbersColors:Array<any>
+  public lineChartGradientsNumbersData: Array<any>;
+  public lineChartGradientsNumbersOptions: any;
+  public lineChartGradientsNumbersLabels: Array<any>;
+  public lineChartGradientsNumbersColors: Array<any>
   // events
-  public chartClicked(e:any):void {
+  public chartClicked(e: any): void {
     console.log(e);
   }
 
-  public chartHovered(e:any):void {
+  public chartHovered(e: any): void {
     console.log(e);
   }
   public hexToRGB(hex, alpha) {
-    var r = parseInt(hex.slice(1, 3), 16),
+    let r = parseInt(hex.slice(1, 3), 16),
       g = parseInt(hex.slice(3, 5), 16),
       b = parseInt(hex.slice(5, 7), 16);
 
     if (alpha) {
-      return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+      return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
     } else {
-      return "rgb(" + r + ", " + g + ", " + b + ")";
+      return 'rgb(' + r + ', ' + g + ', ' + b + ')';
     }
   }
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.chartColor = "#FFFFFF";
-    this.canvas = document.getElementById("bigDashboardChart");
-    this.ctx = this.canvas.getContext("2d");
+    this.chartColor = '#FFFFFF';
+    this.canvas = document.getElementById('bigDashboardChart');
+    this.ctx = this.canvas.getContext('2d');
 
     this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
     this.gradientStroke.addColorStop(0, '#80b6f4');
     this.gradientStroke.addColorStop(1, this.chartColor);
 
     this.gradientFill = this.ctx.createLinearGradient(0, 200, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    this.gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+    this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
+    this.gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.24)');
 
     this.lineBigDashboardChartData = [
         {
-          label: "Data",
+          label: 'Data',
 
           pointBorderWidth: 1,
           pointHoverRadius: 7,
@@ -92,12 +92,12 @@ export class DashboardComponent implements OnInit {
          backgroundColor: this.gradientFill,
          borderColor: this.chartColor,
          pointBorderColor: this.chartColor,
-         pointBackgroundColor: "#2c2c2c",
-         pointHoverBackgroundColor: "#2c2c2c",
+         pointBackgroundColor: '#2c2c2c',
+         pointHoverBackgroundColor: '#2c2c2c',
          pointHoverBorderColor: this.chartColor,
        }
      ];
-    this.lineBigDashboardChartLabels = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    this.lineBigDashboardChartLabels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     this.lineBigDashboardChartOptions = {
 
           layout: {
@@ -115,20 +115,20 @@ export class DashboardComponent implements OnInit {
             bodyFontColor: '#666',
             bodySpacing: 4,
             xPadding: 12,
-            mode: "nearest",
+            mode: 'nearest',
             intersect: 0,
-            position: "nearest"
+            position: 'nearest'
           },
           legend: {
-              position: "bottom",
-              fillStyle: "#FFF",
+              position: 'bottom',
+              fillStyle: '#FFF',
               display: false
           },
           scales: {
               yAxes: [{
                   ticks: {
-                      fontColor: "rgba(255,255,255,0.4)",
-                      fontStyle: "bold",
+                      fontColor: 'rgba(255,255,255,0.4)',
+                      fontStyle: 'bold',
                       beginAtZero: true,
                       maxTicksLimit: 5,
                       padding: 10
@@ -137,21 +137,21 @@ export class DashboardComponent implements OnInit {
                       drawTicks: true,
                       drawBorder: false,
                       display: true,
-                      color: "rgba(255,255,255,0.1)",
-                      zeroLineColor: "transparent"
+                      color: 'rgba(255,255,255,0.1)',
+                      zeroLineColor: 'transparent'
                   }
 
               }],
               xAxes: [{
                   gridLines: {
-                      zeroLineColor: "transparent",
+                      zeroLineColor: 'transparent',
                       display: false,
 
                   },
                   ticks: {
                       padding: 10,
-                      fontColor: "rgba(255,255,255,0.4)",
-                      fontStyle: "bold"
+                      fontColor: 'rgba(255,255,255,0.4)',
+                      fontStyle: 'bold'
                   }
               }]
           }
@@ -167,9 +167,9 @@ export class DashboardComponent implements OnInit {
       },
       tooltips: {
         bodySpacing: 4,
-        mode: "nearest",
+        mode: 'nearest',
         intersect: 0,
-        position: "nearest",
+        position: 'nearest',
         xPadding: 10,
         yPadding: 10,
         caretPadding: 10
@@ -182,7 +182,7 @@ export class DashboardComponent implements OnInit {
             display: false
           },
           gridLines: {
-            zeroLineColor: "transparent",
+            zeroLineColor: 'transparent',
             drawTicks: false,
             display: false,
             drawBorder: false
@@ -194,7 +194,7 @@ export class DashboardComponent implements OnInit {
             display: false
           },
           gridLines: {
-            zeroLineColor: "transparent",
+            zeroLineColor: 'transparent',
             drawTicks: false,
             display: false,
             drawBorder: false
@@ -218,9 +218,9 @@ export class DashboardComponent implements OnInit {
       },
       tooltips: {
         bodySpacing: 4,
-        mode: "nearest",
+        mode: 'nearest',
         intersect: 0,
-        position: "nearest",
+        position: 'nearest',
         xPadding: 10,
         yPadding: 10,
         caretPadding: 10
@@ -229,7 +229,7 @@ export class DashboardComponent implements OnInit {
       scales: {
         yAxes: [{
           gridLines: {
-            zeroLineColor: "transparent",
+            zeroLineColor: 'transparent',
             drawBorder: false
           }
         }],
@@ -239,7 +239,7 @@ export class DashboardComponent implements OnInit {
             display: false
           },
           gridLines: {
-            zeroLineColor: "transparent",
+            zeroLineColor: 'transparent',
             drawTicks: false,
             display: false,
             drawBorder: false
@@ -256,20 +256,20 @@ export class DashboardComponent implements OnInit {
       }
     };
 
-    this.canvas = document.getElementById("lineChartExample");
-    this.ctx = this.canvas.getContext("2d");
+    this.canvas = document.getElementById('lineChartExample');
+    this.ctx = this.canvas.getContext('2d');
 
     this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
     this.gradientStroke.addColorStop(0, '#80b6f4');
     this.gradientStroke.addColorStop(1, this.chartColor);
 
     this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    this.gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+    this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
+    this.gradientFill.addColorStop(1, 'rgba(249, 99, 59, 0.40)');
 
     this.lineChartData = [
         {
-          label: "Active Users",
+          label: 'Active Users',
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -281,31 +281,31 @@ export class DashboardComponent implements OnInit {
       ];
       this.lineChartColors = [
        {
-         borderColor: "#f96332",
-         pointBorderColor: "#FFF",
-         pointBackgroundColor: "#f96332",
+         borderColor: '#f96332',
+         pointBorderColor: '#FFF',
+         pointBackgroundColor: '#f96332',
          backgroundColor: this.gradientFill
        }
      ];
-    this.lineChartLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    this.lineChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     this.lineChartOptions = this.gradientChartOptionsConfiguration;
 
     this.lineChartType = 'line';
 
-    this.canvas = document.getElementById("lineChartExampleWithNumbersAndGrid");
-    this.ctx = this.canvas.getContext("2d");
+    this.canvas = document.getElementById('lineChartExampleWithNumbersAndGrid');
+    this.ctx = this.canvas.getContext('2d');
 
     this.gradientStroke = this.ctx.createLinearGradient(500, 0, 100, 0);
     this.gradientStroke.addColorStop(0, '#18ce0f');
     this.gradientStroke.addColorStop(1, this.chartColor);
 
     this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
     this.gradientFill.addColorStop(1, this.hexToRGB('#18ce0f', 0.4));
 
     this.lineChartWithNumbersAndGridData = [
         {
-          label: "Email Stats",
+          label: 'Email Stats',
            pointBorderWidth: 2,
            pointHoverRadius: 4,
            pointHoverBorderWidth: 1,
@@ -317,13 +317,13 @@ export class DashboardComponent implements OnInit {
       ];
       this.lineChartWithNumbersAndGridColors = [
        {
-         borderColor: "#18ce0f",
-         pointBorderColor: "#FFF",
-         pointBackgroundColor: "#18ce0f",
+         borderColor: '#18ce0f',
+         pointBorderColor: '#FFF',
+         pointBackgroundColor: '#18ce0f',
          backgroundColor: this.gradientFill
        }
      ];
-    this.lineChartWithNumbersAndGridLabels = ["12pm,", "3pm", "6pm", "9pm", "12am", "3am", "6am", "9am"];
+    this.lineChartWithNumbersAndGridLabels = ['12pm,', '3pm', '6pm', '9pm', '12am', '3am', '6am', '9am'];
     this.lineChartWithNumbersAndGridOptions = this.gradientChartOptionsConfigurationWithNumbersAndGrid;
 
     this.lineChartWithNumbersAndGridType = 'line';
@@ -331,17 +331,17 @@ export class DashboardComponent implements OnInit {
 
 
 
-    this.canvas = document.getElementById("barChartSimpleGradientsNumbers");
-    this.ctx = this.canvas.getContext("2d");
+    this.canvas = document.getElementById('barChartSimpleGradientsNumbers');
+    this.ctx = this.canvas.getContext('2d');
 
     this.gradientFill = this.ctx.createLinearGradient(0, 170, 0, 50);
-    this.gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    this.gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)');
     this.gradientFill.addColorStop(1, this.hexToRGB('#2CA8FF', 0.6));
 
 
     this.lineChartGradientsNumbersData = [
         {
-          label: "Active Countries",
+          label: 'Active Countries',
           pointBorderWidth: 2,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 1,
@@ -354,12 +354,12 @@ export class DashboardComponent implements OnInit {
     this.lineChartGradientsNumbersColors = [
      {
        backgroundColor: this.gradientFill,
-       borderColor: "#2CA8FF",
-       pointBorderColor: "#FFF",
-       pointBackgroundColor: "#2CA8FF",
+       borderColor: '#2CA8FF',
+       pointBorderColor: '#FFF',
+       pointBackgroundColor: '#2CA8FF',
      }
    ];
-    this.lineChartGradientsNumbersLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    this.lineChartGradientsNumbersLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.lineChartGradientsNumbersOptions = {
         maintainAspectRatio: false,
         legend: {
@@ -367,9 +367,9 @@ export class DashboardComponent implements OnInit {
         },
         tooltips: {
           bodySpacing: 4,
-          mode: "nearest",
+          mode: 'nearest',
           intersect: 0,
-          position: "nearest",
+          position: 'nearest',
           xPadding: 10,
           yPadding: 10,
           caretPadding: 10
@@ -378,7 +378,7 @@ export class DashboardComponent implements OnInit {
         scales: {
           yAxes: [{
             gridLines: {
-              zeroLineColor: "transparent",
+              zeroLineColor: 'transparent',
               drawBorder: false
             }
           }],
@@ -388,7 +388,7 @@ export class DashboardComponent implements OnInit {
               display: false
             },
             gridLines: {
-              zeroLineColor: "transparent",
+              zeroLineColor: 'transparent',
               drawTicks: false,
               display: false,
               drawBorder: false

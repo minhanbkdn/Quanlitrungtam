@@ -14,6 +14,10 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import {AuthGuard} from './auth.guard';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import { TaisanPipe } from './_pipes/taisan.pipe';
+
 
 @NgModule({
   imports: [
@@ -23,13 +27,14 @@ import {AuthGuard} from './auth.guard';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+      HttpClientModule,
+      ToastrModule.forRoot()
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent,
-
+    LoginComponent
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
