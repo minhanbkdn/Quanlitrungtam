@@ -1,0 +1,86 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Thêm mới kế hoạch</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Tên kế hoạch</label>
+                                    <input type="text" class="form-control" name="tenKeHoach"
+                                           [(ngModel)]="newKeHoach.tenKeHoach" required="required">
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label>File kế hoạch</label>
+                                    <div class="input-group">
+                                        <input class="form-control" name="fileName" required="required" [(ngModel)]="newKeHoach.fileName">
+                                        <span class="input-group-btn file-area">
+                                            <button type="button" class="btn btn-primary" tabindex="2">
+                                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                            </button>
+                                            <input type="file" class="file fileImg" name="fileBase64" id="FileImg" id-view="imageName" err-idx="0" accept=".jpg,.png,.pdf" (change)="onFileChange($event)">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Đơn vị</label>
+                                    <select class="form-control" name="donVi" [(ngModel)]="newKeHoach.idDonVi">
+                                        <option value="0">Chọn đơn vị</option>
+                                        <option *ngFor="let item of donVis" value="{{item.id}}">{{item.ten}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label>Loại kế hoạch</label>
+                                    <select class="form-control" name="loaiKeHoach" [(ngModel)]="newKeHoach.idLoaiKeHoach">
+                                        <option value="0">Chọn loại kế hoạch</option>
+                                        <option *ngFor="let item of loaiKeHoachs" value="{{item.id}}">{{item.ten}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <label>Năm</label>
+                                    <input min="1995" max="2095" type="number" class="form-control" name="nam" required="required" [(ngModel)]="newKeHoach.nam">
+                                </div>
+                            </div>
+                            <div class="col-md-6 pl-1">
+                                <div class="form-group">
+                                    <label>Năm học</label>
+                                    <input type="text" class="form-control" name="namHoc" required="required" [(ngModel)]="newKeHoach.namHoc">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 pr-1" style="display: flex; flex-flow: row-reverse">
+                            <div class="form-group group-function">
+                                <button class="btn btn-lg btn-primary mr-1" routerLink="/ke-hoach">Hủy bỏ</button>
+                                <button class="btn btn-lg btn-info" (click)="themKeHoach()">Lưu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

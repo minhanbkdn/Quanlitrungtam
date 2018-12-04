@@ -1,0 +1,42 @@
+<div class="panel-header panel-header-sm">
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-body">
+          <div class="table-responsive">
+            <button class="btn btn-md btn-success " routerLink="/nhom-tai-san/them-nhom-tai-san" >Thêm</button>
+            <table class="table">
+              <thead class=" text-primary">
+              <th>
+                Mã nhóm tài sản
+              </th>
+              <th>
+                Tên nhóm tài sản
+              </th>
+              <th class="text-right">
+              </th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let taisan of nhomTaiSan">
+                <td>
+                  {{taisan.ma}}
+                </td>
+                <td>
+                  {{taisan.ten}}
+                </td>
+                <td>
+                  <button class="btn btn-md btn-primary"  routerLink="/nhom-tai-san/sua-nhom-tai-san"><i class="now-ui-icons travel_info"></i></button>
+                  <button class="btn btn-md btn-success"><i class="now-ui-icons design_scissors"></i></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

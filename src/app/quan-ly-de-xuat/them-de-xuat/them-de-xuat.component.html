@@ -1,0 +1,97 @@
+<div class="panel-header">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Thêm mới đề xuất</h4>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Loại đề xuất</label>
+                  <select class="form-control">
+                    <option>Item 1</option>
+                    <option>Item 2</option>
+                    <option>Item 3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 pl-1">
+                <div class="form-group">
+                  <label>Tên phòng ban</label>
+                  <select class="form-control">
+                    <option>Item 1</option>
+                    <option>Item 2</option>
+                    <option>Item 3</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Tên đề xuất</label>
+                  <input type="text" class="form-control" placeholder="Tên đề xuất"
+                         required="required">
+                </div>
+              </div>
+              <div class="col-md-6 pl-1">
+                <div class="form-group">
+                  <label>Năm</label>
+                  <select class="form-control">
+                    <option>Item 1</option>
+                    <option>Item 2</option>
+                    <option>Item 3</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Ngày hoàn thành</label>
+                  <input type="date" class="form-control" placeholder="Ngày hoàn thành"
+                         required="required">
+                </div>
+              </div>
+              <div class="col-md-6 pl-1">
+                <div class="form-group">
+                  <label>Trạng thái</label>
+                  <select class="form-control">
+                    <option>Item 1</option>
+                    <option>Item 2</option>
+                    <option>Item 3</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Lý do</label>
+                  <textarea class="form-control" required="required"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="offset-md-3 col-md-3 text-right">
+                <div class="form-group group-function">
+                  <button class="btn btn-md btn-primary" [disabled]="!isValidated()">Thêm mới</button>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group group-function">
+                  <button class="btn btn-md btn-danger">Hủy bỏ</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

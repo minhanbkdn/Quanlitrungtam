@@ -1,0 +1,28 @@
+input[type=file] {
+  cursor: pointer;
+  display: block;
+}
+
+.input-group-btn {
+  position: relative;
+  white-space: nowrap;
+}
+
+.file-area {
+  padding: 0;
+  cursor: pointer;
+}
+
+.file-area .btn {
+  margin: 0;
+}
+
+.file {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  z-index: 3;
+}

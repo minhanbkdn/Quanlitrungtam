@@ -1,21 +1,41 @@
-
 <div class="logo">
     <a href="https://www.creative-tim.com" class="simple-text logo-mini">
-      <div class="logo-img">
-          <img src="./assets/img/angular2-logo-white.png"/>
-      </div>
+        <div class="logo-img">
+            <img src="./assets/img/angular2-logo-white.png"/>
+        </div>
     </a>
     <a href="/" class="simple-text logo-normal">
-        Creative Tim
+        Hello {{userName}}
     </a>
 </div>
 <div class="sidebar-wrapper">
     <ul class="nav">
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-            <a [routerLink]="[menuItem.path]">
-                <i class="now-ui-icons {{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
+        <li *ngFor="let item of menuItems"
+            routerLinkActive="active"
+            class="{{item.class}} nav-item"
+        >
+            <a (click)="resetCollapsible()"
+               [routerLink]="item.path"
+               *ngIf="(item.isParent && !item.isHasChild); else elseBlock">
+                <i class="now-ui-icons {{item.icon}}"></i>
+                <p>{{item.title}}</p>
             </a>
+            <ng-template #elseBlock>
+                <a (click)="item.isCollapsible = !item.isCollapsible">
+                    <i class="now-ui-icons {{item.icon}}"></i>
+                    <p>{{item.title}}</p>
+                </a>
+                <ul class="nav child-menu" *ngIf="item.isHasChild && item.child.length" [hidden]="!item.isCollapsible">
+                    <li *ngFor="let childMenu of item.child"
+                        routerLinkActive="active"
+                        class="{{childMenu.class}} nav-item">
+                        <a [routerLink]="[childMenu.path]">
+                            <i class="now-ui-icons {{childMenu.icon}}"></i>
+                            <p>{{childMenu.title}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </ng-template>
         </li>
     </ul>
 </div>
