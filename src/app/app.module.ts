@@ -19,6 +19,7 @@ import {ToastrModule} from 'ngx-toastr';
 import { TaisanPipe } from './_pipes/taisan.pipe';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -34,7 +35,7 @@ import { TaisanPipe } from './_pipes/taisan.pipe';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent
+    LoginComponent,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
