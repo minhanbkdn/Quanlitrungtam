@@ -17,6 +17,8 @@ import {AuthGuard} from './auth.guard';
 import {HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from 'ngx-toastr';
 import { TaisanPipe } from './_pipes/taisan.pipe';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpTokenInterceptor} from './interceptors/http.token.interceptor';
 
 
 
@@ -37,7 +39,13 @@ import { TaisanPipe } from './_pipes/taisan.pipe';
     AdminLayoutComponent,
     LoginComponent,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+    {
+       provide: HTTP_INTERCEPTORS,
+       useClass: HttpTokenInterceptor, 
+       multi: true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

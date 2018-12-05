@@ -3,10 +3,11 @@ import {GiaoVien} from '../_models/giao-vien';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {API_URL, httpOptions, API_HOME} from '../_constants/constants';
 import index from '@angular/cli/lib/cli';
-
+import {ApiService} from './api.service'
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { JsonwtService } from './jsonwt.service';
 
 
 @Injectable({
@@ -18,7 +19,11 @@ export class GiaoVienService {
     listGV: GiaoVien[] = [];
 
 
-    constructor(private http: HttpClient) {
+    constructor(
+        private apiService: ApiService,
+        private http: HttpClient,
+        private jwtService: JsonwtService
+            ) {
     }
 
     getAllFromApi(page: number, size: number): Observable<any> {
@@ -28,9 +33,9 @@ export class GiaoVienService {
 
     getListGV(): Observable<GiaoVien[]> {
         const url = `${this.giaovienURL}/get-giang-vien`;
-        return this.http.get<GiaoVien[]>(url)
-                .pipe(
-                );
+        return this.apiService.get('/get-giang-vien').pipe(
+
+        )
 
     
     }
