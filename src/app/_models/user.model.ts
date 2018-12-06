@@ -1,8 +1,13 @@
 export interface User {
-    email: string;
-    token: string;
-    username: string;
-    bio: string;
-    image: string;
-  }
+  ID: number,
+  Ho: string;
+  Ten: string;
+  GioiTinh: boolean;
+  NgaySinh: Date;
+  Email: string;
+  DiaChi: string;
+  SoDienThoai: number;
+  CMND: string;
+  Avatar: string;
+}
   

@@ -3,7 +3,9 @@ import {Router} from '@angular/router';
 import {LoginModel} from '../_models/login-model';
 import {LoginService} from '../_services/login.service';
 import {Toast, ToastrService} from 'ngx-toastr';
-import {Md5} from 'ts-md5/dist/md5'
+import {Md5} from 'ts-md5/dist/md5';
+import {UserService} from '../_services/user.service';
+import { JsonwtService } from 'app/_services/jsonwt.service';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +17,16 @@ export class LoginComponent implements OnInit {
   loginModel: LoginModel;
 
 
-  constructor(private router: Router,
-              private loginService: LoginService,
-              private toastr: ToastrService) {
+  constructor(
+      private router: Router,
+      private loginService: LoginService,
+      private userService: UserService,
+      private jwtService: JsonwtService,
+      private toastr: ToastrService) {
       this.loginModel = new LoginModel();
       this.loginModel.Password = '';
       this.loginModel.UserName = '';
+      
   }
 
   ngOnInit() {
@@ -39,6 +45,8 @@ export class LoginComponent implements OnInit {
                 if (result['IsSuccess'] === false) {
                     this.notifDangNhapThatBai(result['MsgError']);
                 } else if (result['IsSuccess'] === true) {
+                    this.userService.setAuth(result['Data']['Profile']);
+                    this.jwtService.saveToken(result['Data']['Token']);
                     localStorage.setItem('UserName', result['Data']['Profile']['Ten']);
                     this.router.navigate(['']);
                 }
