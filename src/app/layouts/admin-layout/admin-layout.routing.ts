@@ -23,6 +23,8 @@ import {KeHoachComponent} from '../../quan-ly-ke-hoach/ke-hoach/ke-hoach.compone
 import {NhomTaiSanComponent} from '../../quan-ly-nhom-tai-san/nhom-tai-san/nhom-tai-san.component';
 import {DeXuatComponent} from '../../quan-ly-de-xuat/de-xuat/de-xuat.component';
 import {ThongKeTaiSanComponent} from '../../thong-ke/thong-ke-tai-san/thong-ke-tai-san.component';
+import {HienThiDsGiaoVienComponent} from '../../quan-li-giao-vien/hien-thi-ds-giao-vien/hien-thi-ds-giao-vien.component';
+import { GiaoVienComponent } from 'app/quan-li-giao-vien/giao-vien/giao-vien.component';
 
 export const AdminLayoutRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -71,4 +73,14 @@ export const AdminLayoutRoutes: Routes = [
     },
 
     {path: 'thong-ke-tai-san', component: ThongKeTaiSanComponent},
+
+    {
+        path: 'giao-vien', component: GiaoVienComponent,
+        children: [
+            {path: '', redirectTo: 'hien-thi-tai-san', pathMatch: 'full'},
+            {path: 'hien-thi-giao-vien', component: HienThiDsGiaoVienComponent},
+            {path: 'them-tai-san', component: ThemTaiSanComponent},
+            {path: 'sua-tai-san/:id', component: SuaTaiSanComponent}
+        ]
+    }
 ];

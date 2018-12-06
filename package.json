@@ -44,6 +44,7 @@
     "rellax": "1.4.0",
     "rxjs": "6.1.0",
     "rxjs-compat": "6.1.0",
+    "ts-md5": "^1.2.4",
     "web-animations-js": "2.3.1",
     "zone.js": "0.8.26"
   },
@@ -66,7 +67,7 @@
     "karma-cli": "1.0.1",
     "karma-coverage-istanbul-reporter": "1.4.2",
     "karma-jasmine": "1.1.1",
-    "protractor": "5.3.1",
+    "protractor": "^5.4.1",
     "ts-node": "5.0.1",
     "tslint": "5.9.1",
     "typescript": "2.7.2"
