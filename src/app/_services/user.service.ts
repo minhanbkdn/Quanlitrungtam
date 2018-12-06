@@ -8,7 +8,9 @@ import { User } from '../_models/user.model';
 import { map ,  distinctUntilChanged } from 'rxjs/operators';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
   private currentUserSubject = new BehaviorSubject<User>({} as User);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
@@ -39,8 +41,8 @@ export class UserService {
   }
 
   setAuth(user: User) {
+    console.log("UserInfo: " + user);
     // Save JWT sent from server in localstorage
-    this.jwtService.saveToken(user.token);
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true
