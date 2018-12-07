@@ -25,6 +25,22 @@ import {DeXuatComponent} from '../../quan-ly-de-xuat/de-xuat/de-xuat.component';
 import {ThongKeTaiSanComponent} from '../../thong-ke/thong-ke-tai-san/thong-ke-tai-san.component';
 import {HienThiDsGiaoVienComponent} from '../../quan-li-giao-vien/hien-thi-ds-giao-vien/hien-thi-ds-giao-vien.component';
 import { GiaoVienComponent } from 'app/quan-li-giao-vien/giao-vien/giao-vien.component';
+import {DanhSachDangKyHocComponent} from '../../quan-ly-dang-ky-hoc/danh-sach-dang-ky-hoc/danh-sach-dang-ky-hoc.component';
+import {HocVienComponent} from '../../quan-ly-hoc-vien/hoc-vien/hoc-vien.component';
+import {DanhSachHocVienComponent} from '../../quan-ly-hoc-vien/danh-sach-hoc-vien/danh-sach-hoc-vien.component';
+import {ThemHocVienComponent} from '../../quan-ly-hoc-vien/them-hoc-vien/them-hoc-vien.component';
+import {SuaHocVienComponent} from '../../quan-ly-hoc-vien/sua-hoc-vien/sua-hoc-vien.component';
+import {KhoaHocComponent} from '../../quan-ly-khoa-hoc/khoa-hoc/khoa-hoc.component';
+import {DanhSachKhoaHocComponent} from '../../quan-ly-khoa-hoc/danh-sach-khoa-hoc/danh-sach-khoa-hoc.component';
+import {ThemKhoaHocComponent} from '../../quan-ly-khoa-hoc/them-khoa-hoc/them-khoa-hoc.component';
+import {SuaKhoaHocComponent} from '../../quan-ly-khoa-hoc/sua-khoa-hoc/sua-khoa-hoc.component';
+import {NguoiDungComponent} from '../../quan-ly-nguoi-dung/nguoi-dung/nguoi-dung.component';
+import {DanhSachNguoiDungComponent} from '../../quan-ly-nguoi-dung/danh-sach-nguoi-dung/danh-sach-nguoi-dung.component';
+import {ThemNguoiDungComponent} from '../../quan-ly-nguoi-dung/them-nguoi-dung/them-nguoi-dung.component';
+import {SuaNguoiDungComponent} from '../../quan-ly-nguoi-dung/sua-nguoi-dung/sua-nguoi-dung.component';
+import {DanhSachPhanQuyenComponent} from '../../quan-ly-phan-quyen/danh-sach-phan-quyen/danh-sach-phan-quyen.component';
+import {ThemGiaoVienComponent} from '../../quan-li-giao-vien/them-giao-vien/them-giao-vien.component';
+import {SuaGiaoVienComponent} from '../../quan-li-giao-vien/sua-giao-vien/sua-giao-vien.component';
 
 export const AdminLayoutRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -34,6 +50,47 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'icons', component: IconsComponent},
     {path: 'maps', component: MapsComponent},
     {path: 'notifications', component: NotificationsComponent},
+
+    {path: 'dang-ky-hoc', component: DanhSachDangKyHocComponent},
+    {path: 'phan-quyen', component: DanhSachPhanQuyenComponent},
+
+    {
+        path: 'hoc-vien', component: HocVienComponent,
+        children: [
+            {path: '', redirectTo: 'danh-sach-hoc-vien', pathMatch: 'full'},
+            {path: 'danh-sach-hoc-vien', component: DanhSachHocVienComponent},
+            {path: 'them-hoc-vien', component: ThemHocVienComponent},
+            {path: 'sua-hoc-vien/:id', component: SuaHocVienComponent}
+        ]
+    },
+    {
+        path: 'giao-vien', component: GiaoVienComponent,
+        children: [
+            {path: '', redirectTo: 'hien-thi-giao-vien', pathMatch: 'full'},
+            {path: 'hien-thi-giao-vien', component: HienThiDsGiaoVienComponent},
+            {path: 'them-giao-vien', component: ThemGiaoVienComponent},
+            {path: 'sua-giao-vien/:id', component: SuaGiaoVienComponent}
+        ]
+    },
+    {
+        path: 'khoa-hoc', component: KhoaHocComponent,
+        children: [
+            {path: '', redirectTo: 'danh-sach-khoa-hoc', pathMatch: 'full'},
+            {path: 'danh-sach-khoa-hoc', component: DanhSachKhoaHocComponent},
+            {path: 'them-khoa-hoc', component: ThemKhoaHocComponent},
+            {path: 'sua-khoa-hoc/:id', component: SuaKhoaHocComponent}
+        ]
+    },
+    {
+        path: 'nguoi-dung', component: NguoiDungComponent,
+        children: [
+            {path: '', redirectTo: 'danh-sach-nguoi-dung', pathMatch: 'full'},
+            {path: 'danh-sach-nguoi-dung', component: DanhSachNguoiDungComponent},
+            {path: 'them-nguoi-dung', component: ThemNguoiDungComponent},
+            {path: 'sua-nguoi-dung/:id', component: SuaNguoiDungComponent}
+        ]
+    },
+
 
     {
         path: 'tai-san', component: TaiSanComponent,
@@ -73,14 +130,4 @@ export const AdminLayoutRoutes: Routes = [
     },
 
     {path: 'thong-ke-tai-san', component: ThongKeTaiSanComponent},
-
-    {
-        path: 'giao-vien', component: GiaoVienComponent,
-        children: [
-            {path: '', redirectTo: 'hien-thi-tai-san', pathMatch: 'full'},
-            {path: 'hien-thi-giao-vien', component: HienThiDsGiaoVienComponent},
-            {path: 'them-tai-san', component: ThemTaiSanComponent},
-            {path: 'sua-tai-san/:id', component: SuaTaiSanComponent}
-        ]
-    }
 ];
