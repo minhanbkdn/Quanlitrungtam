@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api_url:'http://178.128.114.26:8080/api/home'
+  api_url:'http://178.128.114.26:8080/api'
 };
