@@ -24,6 +24,72 @@ export const ROUTES: RouteInfo[] = [
         isCollapsible: false,
         child: []
     },
+    {
+        path: '/dang-ky-hoc',
+        title: 'Quản lý đăng ký học',
+        icon: 'objects_planet',
+        class: '',
+        type: 0,
+        isHasChild: false,
+        isParent: true,
+        isCollapsible: false,
+        child: []
+    },
+    {
+        path: '/hoc-vien',
+        title: 'Quản lý học viên',
+        icon: 'users_circle-08',
+        class: '',
+        type: 0,
+        isHasChild: false,
+        isParent: true,
+        isCollapsible: false,
+        child: []
+    },
+    {
+        path: '/giao-vien',
+        title: 'Quản lý giao viên',
+        icon: 'users_circle-08',
+        class: '',
+        type: 0,
+        isHasChild: false,
+        isParent: true,
+        isCollapsible: false,
+        child: []
+    },
+    {
+        path: '/khoa-hoc',
+        title: 'Quản lý khóa học',
+        icon: 'education_hat',
+        class: '',
+        type: 0,
+        isHasChild: false,
+        isParent: true,
+        isCollapsible: false,
+        child: []
+    },
+    {
+        path: '/nguoi-dung',
+        title: 'Quản lý người dùng',
+        icon: 'users_single-02',
+        class: '',
+        type: 0,
+        isHasChild: false,
+        isParent: true,
+        isCollapsible: false,
+        child: []
+    },
+    {
+        path: '/phan-quyen',
+        title: 'Quản lý phân quyền',
+        icon: 'ui-1_lock-circle-open',
+        class: '',
+        type: 0,
+        isHasChild: false,
+        isParent: true,
+        isCollapsible: false,
+        child: []
+    },
 
     {
         path: '',

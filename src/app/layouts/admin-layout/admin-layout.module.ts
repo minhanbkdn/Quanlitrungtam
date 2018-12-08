@@ -36,6 +36,20 @@ import {HienThiDsGiaoVienComponent} from '../../quan-li-giao-vien/hien-thi-ds-gi
 import {SuaGiaoVienComponent} from '../../quan-li-giao-vien/sua-giao-vien/sua-giao-vien.component';
 import {ThemGiaoVienComponent} from '../../quan-li-giao-vien/them-giao-vien/them-giao-vien.component';
 import {GiaoVienComponent} from '../../quan-li-giao-vien/giao-vien/giao-vien.component';
+import {DanhSachDangKyHocComponent} from '../../quan-ly-dang-ky-hoc/danh-sach-dang-ky-hoc/danh-sach-dang-ky-hoc.component';
+import {DanhSachKhoaHocComponent} from '../../quan-ly-khoa-hoc/danh-sach-khoa-hoc/danh-sach-khoa-hoc.component';
+import {ThemKhoaHocComponent} from '../../quan-ly-khoa-hoc/them-khoa-hoc/them-khoa-hoc.component';
+import {SuaKhoaHocComponent} from '../../quan-ly-khoa-hoc/sua-khoa-hoc/sua-khoa-hoc.component';
+import {KhoaHocComponent} from '../../quan-ly-khoa-hoc/khoa-hoc/khoa-hoc.component';
+import {HocVienComponent} from '../../quan-ly-hoc-vien/hoc-vien/hoc-vien.component';
+import {DanhSachHocVienComponent} from '../../quan-ly-hoc-vien/danh-sach-hoc-vien/danh-sach-hoc-vien.component';
+import {ThemHocVienComponent} from '../../quan-ly-hoc-vien/them-hoc-vien/them-hoc-vien.component';
+import {SuaHocVienComponent} from '../../quan-ly-hoc-vien/sua-hoc-vien/sua-hoc-vien.component';
+import {DanhSachNguoiDungComponent} from '../../quan-ly-nguoi-dung/danh-sach-nguoi-dung/danh-sach-nguoi-dung.component';
+import {NguoiDungComponent} from '../../quan-ly-nguoi-dung/nguoi-dung/nguoi-dung.component';
+import {ThemNguoiDungComponent} from '../../quan-ly-nguoi-dung/them-nguoi-dung/them-nguoi-dung.component';
+import {SuaNguoiDungComponent} from '../../quan-ly-nguoi-dung/sua-nguoi-dung/sua-nguoi-dung.component';
+import {DanhSachPhanQuyenComponent} from '../../quan-ly-phan-quyen/danh-sach-phan-quyen/danh-sach-phan-quyen.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -73,7 +87,21 @@ import {GiaoVienComponent} from '../../quan-li-giao-vien/giao-vien/giao-vien.com
         HienThiDsGiaoVienComponent,
         GiaoVienComponent,
         ThemGiaoVienComponent,
-        SuaGiaoVienComponent
+        SuaGiaoVienComponent,
+        DanhSachDangKyHocComponent,
+        DanhSachKhoaHocComponent,
+        ThemKhoaHocComponent,
+        SuaKhoaHocComponent,
+        KhoaHocComponent,
+        HocVienComponent,
+        DanhSachHocVienComponent,
+        ThemHocVienComponent,
+        SuaHocVienComponent,
+        DanhSachNguoiDungComponent,
+        NguoiDungComponent,
+        ThemNguoiDungComponent,
+        SuaNguoiDungComponent,
+        DanhSachPhanQuyenComponent,
     ]
 })
 
