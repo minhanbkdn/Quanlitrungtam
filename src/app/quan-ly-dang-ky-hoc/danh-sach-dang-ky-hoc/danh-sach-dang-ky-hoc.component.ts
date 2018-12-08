@@ -59,7 +59,40 @@ export class DanhSachDangKyHocComponent implements OnInit {
             },
             error => alert(error)
         )
+    }
 
+    changeState(dangKyHoc: DangKyHoc) {
+        this.dangKyHocService.changeStateDangKyHoc({id: dangKyHoc.Id, idTrangThai: dangKyHoc.TrangThaiDangKy}).subscribe(
+            result => {
+                if (result['IsSuccess'] === true) {
+                    this.dangKyHocs.forEach(value => {
+                        if (value.Id === dangKyHoc.Id) {
+                            value.TrangThaiDangKy = result['Data'];
+                        }
+                    });
+                } else {
+                    this.dangKyHocs.forEach(value => {
+                        if (value.Id === dangKyHoc.Id) {
+                            value.TrangThaiDangKy = result['Data'];
+                        }
+                    });
+                }
+            },
+            error => alert(error)
+        )
+    }
+
+    deleteDangKyHoc(id: number) {
+        this.dangKyHocService.deleteDangKyHoc(id).subscribe(
+            result => {
+                if (result['IsSuccess'] === true) {
+                    this.dangKyHocs = this.dangKyHocs.filter(value => value.Id !== id);
+                } else {
+                    alert('Xoá không thành công!');
+                }
+            },
+            error => alert(error)
+        )
     }
 
     setItemPerPage() {
