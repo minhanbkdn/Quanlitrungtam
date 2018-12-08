@@ -17,11 +17,11 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     const token = this.jwtService.getToken();
     
     if (token) {
-      headersConfig['Authorization'] = `Token ${token}`;
+      headersConfig['Authorization'] = `${token}`;
     }
 
     const request = req.clone({ setHeaders: headersConfig });
-    console.log(request.headers );
+    console.log("header: "+ request.headers );
     return next.handle(request);
   }
 }
