@@ -1,4 +1,4 @@
 export class TrangThaiDangKy {
-    IDKhoaHoc: number;
-    TenKhoaHoc: string;
+    IDTrangThai: number;
+    TenTrangThai: string;
 }

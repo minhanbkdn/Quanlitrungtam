@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DangKyHoc} from '../../_models/dang-ky-hoc';
 import {KhoaHocHienThi} from '../../_models/khoa-hoc-hien-thi';
 import {TrangThaiDangKy} from '../../_models/trang-thai-dang-ky';
+import {DangKyHocService} from '../../_services/dang-ky-hoc.service';
 
 @Component({
     selector: 'app-danh-sach-dang-ky-hoc',
@@ -9,38 +10,61 @@ import {TrangThaiDangKy} from '../../_models/trang-thai-dang-ky';
     styleUrls: ['./danh-sach-dang-ky-hoc.component.scss']
 })
 export class DanhSachDangKyHocComponent implements OnInit {
-    keHoachs: DangKyHoc[] = [];
+    dangKyHocs: DangKyHoc[] = [];
     tinhTrangs: TrangThaiDangKy[] = [];
     khoaHocs: KhoaHocHienThi[] = [];
 
-    total: number;
-    page: number;
-    size: number;
     totalPage: number;
-    idTrangThai: number;
 
-    searchFilter = {
-        tenKeHoach: '',
-        loaiKeHoach: '',
-        donVi: '',
-        nam: '',
-        namHoc: ''
+    condition = {
+        KeySearch: '',
+        IdTrangThai: 0,
+        CurrentPage: 1,
+        PageSize: 10,
+        IdKhoaHoc: 0
     };
 
-    constructor() {
+    constructor(private dangKyHocService: DangKyHocService) {
     }
 
-    ngOnInit() {
+    async ngOnInit() {
+        this.getDangKyHocs();
+        this.getLibraries();
     }
 
-    getKeHoachs(): void {
+    getLibraries(): void {
+        this.dangKyHocService.getDangKyHocs(this.condition).subscribe(
+            result => {
+                if (result['IsSuccess'] === true) {
+                    this.khoaHocs = result['Data']['CacKhoaHoc'];
+                    this.tinhTrangs = result['Data']['CacTrangThaiDangKy'];
+                } else {
+                    alert('Not IsSuccess!');
+                }
+            },
+            error => alert(error)
+        )
+    }
+
+    getDangKyHocs(): void {
+        this.dangKyHocService.getDangKyHocs(this.condition).subscribe(
+            result => {
+                if (result['IsSuccess'] === true) {
+                    this.dangKyHocs = result['Data']['CourseRegistrationList'];
+                    this.totalPage = result['Data']['Paging']['TotalPages'];
+                    this.condition = result['Data']['Condition'];
+                } else {
+                    alert('Not IsSuccess!');
+                }
+            },
+            error => alert(error)
+        )
 
     }
 
-    setItemPerPage(itemPerPage: number) {
-        this.size = itemPerPage;
-        this.page = 0;
-        this.getKeHoachs();
+    setItemPerPage() {
+        this.condition.CurrentPage = 1;
+        this.getDangKyHocs();
     }
 
     arrayOne(): any[] {
@@ -48,18 +72,18 @@ export class DanhSachDangKyHocComponent implements OnInit {
     }
 
     changePage(page: number) {
-        this.page = page - 1;
-        this.getKeHoachs();
+        this.condition.CurrentPage = page;
+        this.getDangKyHocs();
     }
 
     previousPage() {
-        this.page--;
-        this.getKeHoachs();
+        this.condition.CurrentPage--;
+        this.getDangKyHocs();
     }
 
     nextPage() {
-        this.page++;
-        this.getKeHoachs();
+        this.condition.CurrentPage++;
+        this.getDangKyHocs();
     }
 
 
