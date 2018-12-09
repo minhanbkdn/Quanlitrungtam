@@ -76,14 +76,13 @@
               </div>
 
               <div class="col-md-3 pr-1">
-                <div class="form-group">
-                  <label>Group</label>
-                  <select multiple="true"  class="form-control" formControlName="IdGroup">
-                    <option  value="1" >Hoc vien</option>
-                    <option  value="2">Giao Vien</option>
-                    <option  value="3">Quan Tri Vien</option>
-                  </select>
-                </div>
+                  <div class="form-group">
+                    <label>Group</label>
+                    <select multiple="true"  class="form-control" formControlName="IdGroup">
+                      <option value="">Chọn Nhóm</option>
+                      <option *ngFor="let item of listGroup" [value]="item.Id">{{item.GroupName}}</option>
+                    </select>
+                  </div>
               </div>
 
 

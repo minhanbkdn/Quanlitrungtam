@@ -5,6 +5,8 @@ import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { UserManagerService } from 'app/_services/user-manager-service';
 import {SharingService} from '../../_services/sharing.service';
 import { Router} from '@angular/router';
+import { Group } from 'app/_models/group.model';
+import { GroupService } from 'app/_services/group.service';
 @Component({
   selector: 'app-them-nguoi-dung',
   templateUrl: './them-nguoi-dung.component.html',
@@ -14,13 +16,16 @@ export class ThemNguoiDungComponent implements OnInit {
 
     
     userInfo: AddUser;
+    listGroup: Group;
     formAddUser: FormGroup;
     constructor(
+        private groupService: GroupService,
         private userManagerService: UserManagerService,
         private sharingService: SharingService,
         private router: Router,
         private fb: FormBuilder
     ) {
+      this.getListGroup();
   }
 
   ngOnInit() {
@@ -34,14 +39,17 @@ export class ThemNguoiDungComponent implements OnInit {
       NgaySinh: ['', Validators.required],
       GioiTinh: [true],
       DiaChi: [''],
+      SoDienThoai: [''],
       IdGroup: [null, Validators.required]
     })
   }
 
 
   onSubmit(value: any) {
+    console.log(value);
     this.userManagerService.add(value).subscribe(
       result => {
+        console.log(result);
         if (+result['Code'] === 200) {
             this.sharingService.notifInfo('Thêm người dùng thành công');
             this.router.navigate(['/nguoi-dung']);
@@ -53,6 +61,14 @@ export class ThemNguoiDungComponent implements OnInit {
     }
     )
 
+  }
+
+  getListGroup() {
+    this.groupService.getListGroup(null).subscribe(
+      result => {
+        this.listGroup = result['Data']['GroupList'];
+      }
+    )
   }
 
 }

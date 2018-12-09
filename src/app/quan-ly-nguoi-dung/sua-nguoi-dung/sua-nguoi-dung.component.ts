@@ -6,6 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AddUser } from 'app/_models/add-user.model';
 import { UserInfo } from 'app/_models/userinfo.model';
 import {DatePipe} from '@angular/common'
+import { Group } from 'app/_models/group.model';
+import { GroupService } from 'app/_services/group.service';
 @Component({
   selector: 'app-sua-nguoi-dung',
   templateUrl: './sua-nguoi-dung.component.html',
@@ -15,14 +17,17 @@ export class SuaNguoiDungComponent implements OnInit {
 
   userInfo: AddUser ;
   formEditUser: FormGroup;
+  listGroup: Group[];
   constructor(
     private userManagerService: UserManagerService,
     private sharingService: SharingService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private dataPipe: DatePipe
+    private dataPipe: DatePipe,
+    private groupService: GroupService
   ) {
+    this.getListGroup();
   }
 
   async ngOnInit(){
@@ -79,6 +84,14 @@ export class SuaNguoiDungComponent implements OnInit {
 
   transform(date):any {
     return this.dataPipe.transform(date, 'yyyy-MM-dd');
+  }
+
+  getListGroup() {
+    this.groupService.getListGroup(null).subscribe(
+      result => {
+        this.listGroup = result['Data']['GroupList'];
+      }
+    )
   }
 
 }
