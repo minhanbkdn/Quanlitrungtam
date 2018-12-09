@@ -9,5 +9,6 @@ export class User {
   SoDienThoai: number;
   CMND: string;
   Avatar: string;
+  Username: string;
 }
   

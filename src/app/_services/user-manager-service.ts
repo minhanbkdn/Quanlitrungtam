@@ -37,16 +37,14 @@ export class UserManagerService {
 
     }
     getById(id: number): Observable<any> {
-        const url = `${this.userURL}/${id}`;
-        return this.http.get(url);
+        return this.apiService.get(`/user/get-user/${id}`).pipe()
     }
 
     add(body: any): Observable<any> {
         return this.apiService.post('/user/add-user',body).pipe()
     }
 
-    edit(newGV: GiaoVien): Observable<any> {
-        const url = `${this.userURL}/${newGV.IdUser}`;
-        return this.http.put(url, newGV, httpOptions);
+    edit(body: any): Observable<any> {
+        return this.apiService.post('/user/edit-user', body).pipe()
     }
 }
