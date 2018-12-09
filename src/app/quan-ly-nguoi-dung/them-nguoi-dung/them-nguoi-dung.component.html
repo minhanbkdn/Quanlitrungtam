@@ -1,3 +1,112 @@
-<p>
-  them-nguoi-dung works!
-</p>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Thêm mới người dùng</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(formAddUser.value);" [formGroup]="formAddUser">
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input class="form-control" placeholder="username" formControlName="Username"  >
+                  <p  *ngIf="formAddUser.get('Username').invalid && formAddUser.get('Username').touched" [class.invalid]="true">Username is required and valid</p>
+                </div>
+              </div>
+            
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control" placeholder="email" formControlName = "Email">
+                  <p  *ngIf="formAddUser.get('Email').invalid && formAddUser.get('Email').touched" [class.invalid]="true">Email is required and valid</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Họ</label>
+                  <input class="form-control" placeholder="Ho" formControlName = "Ho">
+                  <p  *ngIf="formAddUser.get('Ho').invalid && formAddUser.get('Ho').touched" [class.invalid]="true">Họ is required</p>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Ten</label>
+                  <input class="form-control" placeholder="Ten" formControlName = "Ten">
+                  <p  *ngIf="formAddUser.get('Ten').invalid && formAddUser.get('Ten').touched" [class.invalid]="true">Tên is required</p>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Giới Tính</label>
+                  <select class="form-control" formControlName="GioiTinh">
+                    <option value="true" selected>Nam</option>
+                    <option value="false">Nữ</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Địa chỉ </label>
+                  <input class="form-control" placeholder="DiaChi" formControlName="DiaChi">
+                </div>
+              </div>
+
+              <div class="col-md-3 pr-1">
+                <div class="form-group">
+                  <label>Ngày sinh</label>
+                  <input type="date" class="form-control" formControlName="NgaySinh">
+                  <p  *ngIf="formAddUser.get('NgaySinh').invalid && formAddUser.get('NgaySinh').touched" [class.invalid]="true">Ngày sinh is required</p>
+                </div>
+              </div>
+
+              <div class="col-md-3 pr-1">
+                <div class="form-group">
+                  <label>Group</label>
+                  <select multiple="true"  class="form-control" formControlName="IdGroup">
+                    <option  value="1">Hoc vien</option>
+                    <option  value="2">Giao Vien</option>
+                    <option  value="3">Quan Tri Vien</option>
+                  </select>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" formControlName="Password">
+                  <p  *ngIf="formAddUser.get('Password').invalid && formAddUser.get('Password').touched" [class.invalid]="true">Password is required</p>
+                </div>
+              </div>
+
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" class="form-control" formControlName="ConfirmPassword">
+                  <p  *ngIf="formAddUser.get('ConfirmPassword').invalid && formAddUser.get('ConfirmPassword').touched" [class.invalid]="true">ConfirmPassword is required</p>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-lg btn-info" type="submit" [class.unSubmit]="formAddUser.invalid" [disabled]="formAddUser.invalid">Lưu</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
