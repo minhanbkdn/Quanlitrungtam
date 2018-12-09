@@ -101,14 +101,14 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let objGV of listUser">
-                                    <td>{{objGV.Id}}</td>
+                                    <td #id>{{objGV.Id}}</td>
                                     <td>{{objGV.Avatar }</td>
                                     <td>{{objGV.Ho}} {{objGV.Ten}}</td>
                                     <td>{{objGV.SoDienThoai}}</td>
                                     <td>{{objGV.NgaySinh}}</td>
                                     <td>
                                         <button class="btn btn-md btn-info" routerLink="/nguoi-dung/sua-nguoi-dung/{{objGV.Id}}"><i class="now-ui-icons travel_info"></i></button>
-                                        <button class="btn btn-md btn-warning"><i class="now-ui-icons ui-1_simple-delete"></i></button>
+                                        <button class="btn btn-md btn-warning" (click)="deleteUser(objGV.Id)"><i class="now-ui-icons ui-1_simple-delete"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
