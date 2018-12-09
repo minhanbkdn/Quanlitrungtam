@@ -57,7 +57,8 @@ import {DanhSachPhanQuyenComponent} from '../../quan-ly-phan-quyen/danh-sach-pha
         FormsModule,
         ChartsModule,
         NgbModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         DashboardComponent,

@@ -1,5 +1,5 @@
-export interface User {
-  ID: number,
+export class User {
+  ID: number;
   Ho: string;
   Ten: string;
   GioiTinh: boolean;

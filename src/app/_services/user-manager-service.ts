@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { JsonwtService } from './jsonwt.service';
 import { UserInfo } from 'app/_models/userinfo.model';
+import { AddUser } from 'app/_models/add-user.model';
 
 
 
@@ -40,9 +41,8 @@ export class UserManagerService {
         return this.http.get(url);
     }
 
-    add(newGV: GiaoVien): Observable<any> {
-        const url = this.userURL;
-        return this.http.post(url, GiaoVien, httpOptions);
+    add(body: any): Observable<any> {
+        return this.apiService.post('/user/add-user',body).pipe()
     }
 
     edit(newGV: GiaoVien): Observable<any> {
