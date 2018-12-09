@@ -90,4 +90,17 @@ export class DanhSachNguoiDungComponent implements OnInit {
         console.dir(this.userModel);
         this.getlistUser();
     }
+    deleteUser(id: number) {
+        console.log("id: "+ id);
+        this.userService.deleteUser(id).subscribe(
+            result => {
+                if (result['IsSuccess'] === true) {
+                    this.listUser = this.listUser.filter(value => value.Id !== id);
+                } else {
+                    alert('Xoá không thành công!');
+                }
+            },
+            error => alert(error)
+        )
+    }
 }

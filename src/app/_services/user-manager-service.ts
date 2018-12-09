@@ -18,6 +18,7 @@ import { AddUser } from 'app/_models/add-user.model';
 })
 export class UserManagerService {
 
+
     private userURL = API_HOME;
     listUser: UserInfo[] = [];
 
@@ -46,5 +47,10 @@ export class UserManagerService {
 
     edit(body: any): Observable<any> {
         return this.apiService.post('/user/edit-user', body).pipe()
+    }
+
+        
+    deleteUser(id: number): any {
+       return this.apiService.delete(`/user/delete-user/${id}`).pipe()
     }
 }
