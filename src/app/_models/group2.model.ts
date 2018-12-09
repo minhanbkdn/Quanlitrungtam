@@ -1,5 +1,4 @@
-export class Group {
+export class Group2 {
     IdGroup: number;
-    TenGroup: string;
     GroupName: string;
 }

@@ -10,13 +10,15 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { JsonwtService } from './jsonwt.service';
 import { UserInfo } from 'app/_models/userinfo.model';
 import { AddUser } from 'app/_models/add-user.model';
+import { Group } from 'app/_models/group.model';
 
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserManagerService {
+export class GroupService {
+    
 
     private userURL = API_HOME;
     listUser: UserInfo[] = [];
@@ -31,8 +33,8 @@ export class UserManagerService {
 
 
 
-    getListUser(body: any): Observable<UserInfo[]> {
-        return this.apiService.post('/user/get-list-user',body).pipe(
+    getListGroup(body: any): Observable<Group[]> {
+        return this.apiService.post('/group/get-list-group',body).pipe(
         )
 
     }
