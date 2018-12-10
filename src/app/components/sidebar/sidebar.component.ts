@@ -80,6 +80,17 @@ export const ROUTES: RouteInfo[] = [
         child: []
     },
     {
+        path: '/group',
+        title: 'Quản lý Group',
+        icon: 'users_single-02',
+        class: '',
+        type: 0,
+        isHasChild: false,
+        isParent: true,
+        isCollapsible: false,
+        child: []
+    },
+    {
         path: '/phan-quyen',
         title: 'Quản lý phân quyền',
         icon: 'ui-1_lock-circle-open',
