@@ -21,7 +21,7 @@ export class DanhSachNguoiDungComponent implements OnInit {
         Ten: '',
         Email: '',
         SoDienThoai: '',
-        UserName: '',
+        Username: '',
         IdGroup: null
     };
   constructor(private userService: UserManagerService) {
@@ -82,12 +82,12 @@ export class DanhSachNguoiDungComponent implements OnInit {
 
 
     search() {
-        this.userModel.UserName = this.searchFilter.UserName;
+        this.userModel.Username = this.searchFilter.Username;
         this.userModel.Email = this.searchFilter.Email;
         this.userModel.Ten = this.searchFilter.Ten;
         this.userModel.SoDienThoai = this.searchFilter.SoDienThoai;
-        this.userModel.IdGroup = this.searchFilter.IdGroup ? null : null
-        console.dir(this.userModel);
+        this.userModel.IdGroup = +this.searchFilter.IdGroup
+        console.dir("dfdfd: "+ this.userModel);
         this.getlistUser();
     }
     deleteUser(id: number) {

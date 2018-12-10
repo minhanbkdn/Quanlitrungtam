@@ -34,7 +34,7 @@
                             <div class="col-md-5 pr-1">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" class="form-control" name="Username" value="" [(ngModel)]="searchFilter.UserName">
+                                    <input type="text" class="form-control" name="Username" value="" [(ngModel)]="searchFilter.Username">
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label>Nhóm</label>
-                                    <select class="form-control" name="IdGroup" (change)="searchFilter.IdGroup = ($event.target.value)">
+                                    <select class="form-control" name="IdGroup" [(ngModel)]="searchFilter.IdGroup">
                                         <option value="">Chọn Nhóm</option>
                                         <option *ngFor="let item of listGroup" [value]="item.IdGroup">{{item.TenGroup}}</option>
                                     </select>
