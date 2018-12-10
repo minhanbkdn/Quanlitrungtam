@@ -50,6 +50,10 @@ import {NguoiDungComponent} from '../../quan-ly-nguoi-dung/nguoi-dung/nguoi-dung
 import {ThemNguoiDungComponent} from '../../quan-ly-nguoi-dung/them-nguoi-dung/them-nguoi-dung.component';
 import {SuaNguoiDungComponent} from '../../quan-ly-nguoi-dung/sua-nguoi-dung/sua-nguoi-dung.component';
 import {DanhSachPhanQuyenComponent} from '../../quan-ly-phan-quyen/danh-sach-phan-quyen/danh-sach-phan-quyen.component';
+import { HienThiGroupComponent } from '../../quan-li-group/hien-thi-group/hien-thi-group.component';
+import { GroupComponent } from '../../quan-li-group/group/group.component';
+import { ThemGroupComponent } from '../../quan-li-group/them-group/them-group.component';
+import { SuaGroupComponent } from '../../quan-li-group/sua-group/sua-group.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -103,6 +107,10 @@ import {DanhSachPhanQuyenComponent} from '../../quan-ly-phan-quyen/danh-sach-pha
         ThemNguoiDungComponent,
         SuaNguoiDungComponent,
         DanhSachPhanQuyenComponent,
+        HienThiGroupComponent,
+        GroupComponent,
+        ThemGroupComponent,
+        SuaGroupComponent,
     ]
 })
 

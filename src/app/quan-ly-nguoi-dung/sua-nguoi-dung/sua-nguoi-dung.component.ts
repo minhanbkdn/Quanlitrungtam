@@ -5,7 +5,7 @@ import { SharingService } from 'app/_services/sharing.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AddUser } from 'app/_models/add-user.model';
 import { UserInfo } from 'app/_models/userinfo.model';
-import {DatePipe} from '@angular/common'
+import {DatePipe, JsonPipe} from '@angular/common'
 import { Group } from 'app/_models/group.model';
 import { GroupService } from 'app/_services/group.service';
 @Component({
@@ -73,7 +73,7 @@ export class SuaNguoiDungComponent implements OnInit {
     return this.userManagerService.getById(id).toPromise().then(
       result => {
         this.userInfo =  result['Data']['User'];
-        console.log(this.userInfo)
+        console.dir("userinfor: " + JSON.stringify(this.userInfo));
       },
       error2 => {
         this.router.navigate(['/nguoi-dung']);
