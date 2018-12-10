@@ -18,7 +18,8 @@ export class HienThiGroupComponent implements OnInit {
   condition = {
       KeySearch: '',
       CurrentPage: 1,
-      PageSize: 10
+      PageSize: 10,
+      TrangThai: ''
   };
 
   constructor(private groupService: GroupService) {
