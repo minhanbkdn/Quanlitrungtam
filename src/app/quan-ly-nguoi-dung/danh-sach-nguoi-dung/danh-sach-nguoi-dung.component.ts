@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {UserInfo} from '../../_models/userinfo.model';
+import { UserInfo } from '../../_models/userinfo.model';
 import { UserManagerService } from 'app/_services/user-manager-service';
 import { QueryUser } from 'app/_models/queryuser.model';
 import { Group } from 'app/_models/group.model';
+import { GroupService } from 'app/_services/group.service';
 
 @Component({
-  selector: 'app-danh-sach-nguoi-dung',
-  templateUrl: './danh-sach-nguoi-dung.component.html',
-  styleUrls: ['./danh-sach-nguoi-dung.component.scss']
+    selector: 'app-danh-sach-nguoi-dung',
+    templateUrl: './danh-sach-nguoi-dung.component.html',
+    styleUrls: ['./danh-sach-nguoi-dung.component.scss']
 })
 export class DanhSachNguoiDungComponent implements OnInit {
 
@@ -21,77 +22,69 @@ export class DanhSachNguoiDungComponent implements OnInit {
         Ten: '',
         Email: '',
         SoDienThoai: '',
-        Username: '',
-        IdGroup: null
+        UserName: '',
+        IdGroup: null,
+        PageSize: 10,
+        CurrentPage: 1
     };
-  constructor(private userService: UserManagerService) {
-      this.listUser = [];
-      this.listGroup = [];
-      this.userModel = new QueryUser();
-      this.userModel.CurrentPage = 1;
-      this.userModel.PageSize= 3;
-  }
-
-  async ngOnInit() {
-    this.getlistUser();
-
-  }
-
-
-    setItemPerPage(itemPerPage: number) {
-      this.userModel.PageSize = itemPerPage;
-      this.getlistUser();
+    constructor(
+        private userService: UserManagerService,
+        private groupService: GroupService
+    ) {
+        this.groupService.getListGroup(null);
+        console.log("listGroup: "+ this.listGroup);
     }
+
+    async ngOnInit() {
+        this.getlistUser();
+    }
+
+
+ 
 
     getlistUser() {
-          this.userService.getListUser(this.userModel).subscribe(
-              result => {
-                  console.log(result);
-                  this.listUser = result['Data']['UserList'];
-                  this.listGroup = result['Data']['Group'];
-                  this.totalPage =  result['Data']['Paging']['TotalPages'];
-                  this.page = result['Data']['Paging']['CurrentPage'];
+        this.userService.getListUser(this.searchFilter).subscribe(
+            result => {
+                console.log(result);
+                this.listUser = result['Data']['UserList'];
+                this.listGroup = result['Data']['Group'];
+                this.totalPage = result['Data']['Paging']['TotalPages'];
+                this.searchFilter = result['Data']['Condition'];
 
-              }, error2 => {
-                  console.log('Lỗi', error2);
-              }
-          );
+            }, error2 => {
+                console.log('Lỗi', error2);
+            }
+        );
     }
 
+
+    setItemPerPage() {
+        this.searchFilter.CurrentPage = 1;
+        this.getlistUser();
+    }
 
     arrayOne(): any[] {
         return Array(this.totalPage);
     }
 
     changePage(page: number) {
-      this.page= page;
-      this.userModel.CurrentPage = this.page;
-      this.getlistUser();
+        this.searchFilter.CurrentPage = page;
+        this.getlistUser();
     }
 
     previousPage() {
-        this.page--;
-        this.userModel.CurrentPage = this.page;
+        this.searchFilter.CurrentPage--;
         this.getlistUser();
     }
     nextPage() {
-        this.page++;
-        this.userModel.CurrentPage = this.page;
+        this.searchFilter.CurrentPage++;
         this.getlistUser();
     }
 
 
-    search() {
-        this.userModel.Username = this.searchFilter.Username;
-        this.userModel.Email = this.searchFilter.Email;
-        this.userModel.Ten = this.searchFilter.Ten;
-        this.userModel.SoDienThoai = this.searchFilter.SoDienThoai;
-        this.userModel.IdGroup = +this.searchFilter.IdGroup
-        console.dir("dfdfd: "+ this.userModel);
-        this.getlistUser();
-    }
+
     deleteUser(id: number) {
-        console.log("id: "+ id);
+        console.log("id: " + id);
         this.userService.deleteUser(id).subscribe(
             result => {
                 if (result['IsSuccess'] === true) {
@@ -103,4 +96,14 @@ export class DanhSachNguoiDungComponent implements OnInit {
             error => alert(error)
         )
     }
+
+    getListGroup() {
+        this.groupService.getListGroup(null).subscribe(
+            result => {
+                this.listGroup = result['Data']['GroupList'];
+            }
+        )
+    }
+
+
 }

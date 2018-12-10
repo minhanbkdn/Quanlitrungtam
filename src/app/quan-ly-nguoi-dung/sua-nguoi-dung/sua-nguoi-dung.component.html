@@ -80,7 +80,7 @@
                     <label>Group</label>
                     <select multiple="true"  class="form-control" formControlName="IdGroup">
                       <option value="">Chọn Nhóm</option>
-                      <option *ngFor="let item of listGroup" [value]="item.Id">{{item.GroupName}}</option>
+                      <option *ngFor="let item of listGroup" [selected] = "IdGroup === item.Id" [value]="item.Id">{{item.GroupName}}</option>
                     </select>
                   </div>
               </div>
