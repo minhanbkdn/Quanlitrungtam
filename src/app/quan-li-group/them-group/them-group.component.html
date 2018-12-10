@@ -1,3 +1,53 @@
-<p>
-  them-group works!
-</p>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Thêm Group</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="formAddGroup">
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Tên Group</label>
+                  <input class="form-control" placeholder="group_name" formControlName="GroupName">
+                  <p *ngIf="formAddGroup.get('GroupName').invalid && formAddGroup.get('GroupName').touched"
+                    [class.invalid]="true">Group Name is required and valid</p>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Mô tả</label>
+                  <input class="form-control"  formControlName="MoTa">
+                  <p *ngIf="formAddGroup.get('MoTa').invalid && formAddGroup.get('MoTa').touched" [class.invalid]="true">Mô tả
+                    is required </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>IS Default</label>
+                  <input class="form-control" type="checkbox" formControlName="IsDefault">
+                </div>
+              </div>
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>IS System</label>
+                  <input class="form-control" type="checkbox" formControlName="IsSystem">
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-lg btn-info" type="submit" [class.unSubmit]="formAddGroup.invalid" [disabled]="formAddGroup.invalid">Thêm</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

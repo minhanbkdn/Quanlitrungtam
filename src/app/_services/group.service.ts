@@ -43,11 +43,11 @@ export class GroupService {
     }
 
     add(body: any): Observable<any> {
-        return this.apiService.post('/user/add-user',body).pipe()
+        return this.apiService.post('/group/post',body).pipe()
     }
 
     edit(body: any): Observable<any> {
-        return this.apiService.post('/user/edit-user', body).pipe()
+        return this.apiService.post('/group/put', body).pipe()
     }
 
     delete(id: number): Observable<any> {
