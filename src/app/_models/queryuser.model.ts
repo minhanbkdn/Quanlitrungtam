@@ -3,7 +3,7 @@ export class QueryUser {
     Ten : string;
     Email : string;
     SoDienThoai : string;
-    UserName : string;
+    Username : string;
     IdGroup:  number;
     CurrentPage: number;
     PageSize: number;

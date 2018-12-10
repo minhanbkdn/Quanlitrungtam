@@ -1,5 +1,5 @@
-export interface User {
-  ID: number,
+export class User {
+  ID: number;
   Ho: string;
   Ten: string;
   GioiTinh: boolean;
@@ -9,5 +9,6 @@ export interface User {
   SoDienThoai: number;
   CMND: string;
   Avatar: string;
+  Username: string;
 }
   

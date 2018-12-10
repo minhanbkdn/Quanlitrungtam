@@ -34,7 +34,7 @@
                             <div class="col-md-5 pr-1">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" class="form-control" name="Username" value="" [(ngModel)]="searchFilter.UserName">
+                                    <input type="text" class="form-control" name="Username" value="" [(ngModel)]="searchFilter.Username">
                                 </div>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label>Nhóm</label>
-                                    <select class="form-control" name="IdGroup" (change)="searchFilter.IdGroup = ($event.target.value)">
+                                    <select class="form-control" name="IdGroup" [(ngModel)]="searchFilter.IdGroup">
                                         <option value="">Chọn Nhóm</option>
                                         <option *ngFor="let item of listGroup" [value]="item.IdGroup">{{item.TenGroup}}</option>
                                     </select>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="col-md-6 pr-1 flex-column-reverse">
                             <div class="form-group">
-                                <button class="btn btn btn-lg btn-success float-right" routerLink="/tai-san/them-tai-san">Thêm
+                                <button class="btn btn btn-lg btn-success float-right" routerLink="/nguoi-dung/them-nguoi-dung">Thêm
                                     mới
                                 </button>
                             </div>
@@ -101,14 +101,14 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let objGV of listUser">
-                                    <td>{{objGV.Id}}</td>
+                                    <td #id>{{objGV.Id}}</td>
                                     <td>{{objGV.Avatar }</td>
                                     <td>{{objGV.Ho}} {{objGV.Ten}}</td>
                                     <td>{{objGV.SoDienThoai}}</td>
                                     <td>{{objGV.NgaySinh}}</td>
                                     <td>
-                                        <button class="btn btn-md btn-info" routerLink=""><i class="now-ui-icons travel_info"></i></button>
-                                        <button class="btn btn-md btn-warning"><i class="now-ui-icons ui-1_simple-delete"></i></button>
+                                        <button class="btn btn-md btn-info" routerLink="/nguoi-dung/sua-nguoi-dung/{{objGV.Id}}"><i class="now-ui-icons travel_info"></i></button>
+                                        <button class="btn btn-md btn-warning" (click)="deleteUser(objGV.Id)"><i class="now-ui-icons ui-1_simple-delete"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
