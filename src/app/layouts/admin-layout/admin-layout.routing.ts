@@ -41,6 +41,10 @@ import {SuaNguoiDungComponent} from '../../quan-ly-nguoi-dung/sua-nguoi-dung/sua
 import {DanhSachPhanQuyenComponent} from '../../quan-ly-phan-quyen/danh-sach-phan-quyen/danh-sach-phan-quyen.component';
 import {ThemGiaoVienComponent} from '../../quan-li-giao-vien/them-giao-vien/them-giao-vien.component';
 import {SuaGiaoVienComponent} from '../../quan-li-giao-vien/sua-giao-vien/sua-giao-vien.component';
+import { GroupComponent } from 'app/quan-li-group/group/group.component';
+import { HienThiGroupComponent } from 'app/quan-li-group/hien-thi-group/hien-thi-group.component';
+import { ThemGroupComponent } from 'app/quan-li-group/them-group/them-group.component';
+import { SuaGroupComponent } from 'app/quan-li-group/sua-group/sua-group.component';
 
 export const AdminLayoutRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -88,6 +92,16 @@ export const AdminLayoutRoutes: Routes = [
             {path: 'danh-sach-nguoi-dung', component: DanhSachNguoiDungComponent},
             {path: 'them-nguoi-dung', component: ThemNguoiDungComponent},
             {path: 'sua-nguoi-dung/:id', component: SuaNguoiDungComponent}
+        ]
+    },
+
+    {
+        path: 'group', component: GroupComponent,
+        children: [
+            {path: '', redirectTo: 'danh-sach-group', pathMatch: 'full'},
+            {path: 'danh-sach-group', component: HienThiGroupComponent},
+            {path: 'them-group', component: ThemGroupComponent},
+            {path: 'sua-group/:id', component: SuaGroupComponent}
         ]
     },
 

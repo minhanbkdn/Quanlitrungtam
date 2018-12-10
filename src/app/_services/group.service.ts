@@ -49,4 +49,8 @@ export class GroupService {
     edit(body: any): Observable<any> {
         return this.apiService.post('/user/edit-user', body).pipe()
     }
+
+    delete(id: number): Observable<any> {
+        return this.apiService.delete(`/group/delete/${id}`).pipe();
+    }
 }
