@@ -31,9 +31,8 @@ export class SuaNguoiDungComponent implements OnInit {
   }
 
   async ngOnInit(){
-    this.getUser();
+    await this.getUser();
     const id = this.route.snapshot.paramMap.get('id');
-    await new Promise(r => setTimeout(r, 1500));  
     this.formEditUser = this.fb.group({
       
       Username: [ {value: this.userInfo.Username, disabled: true}, Validators.required],
