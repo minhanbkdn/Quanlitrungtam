@@ -101,7 +101,7 @@
                             <tbody>
                                 <tr *ngFor="let objGV of listUser">
                                     <td #id>{{objGV.Id}}</td>
-                                    <td>{{objGV.Avatar }</td>
+                                    <td><img [src] ="objGV.Avatar" width="50px" height="50px"/></td>
                                     <td>{{objGV.Ho}} {{objGV.Ten}}</td>
                                     <td>{{objGV.SoDienThoai}}</td>
                                     <td>{{objGV.NgaySinh}}</td>
