@@ -30,7 +30,7 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Hiển thị</label>
-                <select class="form-control page-link bg-light" style="max-width: 100px" [(ngModel)]="conditions.PageSize"
+                <select class="form-control #x page-link bg-light" style="max-width: 100px" [(ngModel)]="conditions.PageSize"
                   (change)="setItemPerPage()">
                   <option value=2 [selected]="2 === conditions.PageSize">2</option>
                   <option value=5 [selected]="5 === conditions.PageSize">5</option>
@@ -54,7 +54,7 @@
                 <tr *ngFor="let item of listKhoaHoc">
                   <td>{{item.Id}}</td>
                   <td>{{item.TenKhoaHoc}}</td>
-                  <td><img [src] = "item.AnhMinhHoa" width="50px" height="50px"/></td>
+                  <td><img [src] = "item.AnhMinhHoa" alt="item.AnhMinhHoa" width="50px" height="50px"/></td>
                   <td>{{ item.NgayKhaiGiang | date:'dd/MM/yyyy' }}</td>
                   <td>{{item.HocPhi}}</td>
                   <td>

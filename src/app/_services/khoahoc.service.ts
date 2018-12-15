@@ -23,7 +23,7 @@ export class KhoahocService {
   }
 
   add(body: any): Observable<any> {
-    return this.apiService.post('/courses/add').pipe();
+    return this.apiService.post('/courses/new-course').pipe();
   }
 
   edit(body: any): Observable<any> {

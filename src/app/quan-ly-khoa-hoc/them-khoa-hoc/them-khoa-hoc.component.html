@@ -1,3 +1,132 @@
-<p>
-  them-khoa-hoc works!
-</p>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Thêm Group</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="formAddKhoaHoc">
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Tên Khoá Học</label>
+                  <input class="form-control" formControlName="TenKhoaHoc">
+                  <p *ngIf="formAddKhoaHoc.get('TenKhoaHoc').invalid && formAddKhoaHoc.get('TenKhoaHoc').touched"
+                    [class.invalid]="true">Yêu cầu nhập tên khoá học</p>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Ngày Khai Giảng</label>
+                  <input class="form-control" type="date" formControlName="NgayKhaiGiang">
+                  <p *ngIf="formAddKhoaHoc.get('NgayKhaiGiang').invalid && formAddKhoaHoc.get('NgayKhaiGiang').touched"
+                    [class.invalid]="true">
+                    Yêu cầu nhập ngày khai giảng
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Học phí</label>
+                  <input class="form-control" formControlName="HocPhi">
+                  <p *ngIf="formAddKhoaHoc.get('HocPhi').invalid && formAddKhoaHoc.get('HocPhi').touched"
+                    [class.invalid]="true">
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Cho phép đăng ký</label>
+                  <input class="form-control" type="checkbox" formControlName="ChoPhepDangKy">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Thời gian bắt đầu</label>
+                  <input class="form-control" type="date" formControlName="ThoiGianBatDau">
+                </div>
+              </div>
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Thời gian kết thúc</label>
+                  <input class="form-control" type="date" formControlName="ThoiGianKetThuc">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label for="exampleSelect1">Giáo viên đứng lớp</label>
+                  <select class="form-control" id="exampleSelect1" formControlName="GiaoVienDungLop">
+                    <option value="1">Nguyen Thi Hoa</option>
+                    <option value="2">Le Thi Dan</option>
+                    <option value="3">Ngo Nhan Ai</option>
+                    <option value="4">Dong Trac</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Cho phép hiển thị</label>
+                  <input class="form-control" type="checkbox" formControlName="ChoPhepHienThi">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label for="exampleTextarea">Tóm tắt</label>
+                  <input class="form-control" formControlName="TomTat">
+                </div>
+              </div>
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label for="exampleTextarea">Chi tiết</label>
+                  <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Lịch Học</label>
+                  <input class="form-control" formControlName="LichHoc">
+                  <p *ngIf="formAddKhoaHoc.get('LichHoc').invalid && formAddKhoaHoc.get('LichHoc').touched"
+                    [class.invalid]="true">Yêu cầu nhập lịch học</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+                  <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for
+                    the above input. It's a bit lighter and easily wraps to a new line.</small>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-lg btn-info" type="submit" [class.unSubmit]="formAddKhoaHoc.invalid" [disabled]="formAddKhoaHoc.invalid">
+              Thêm
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
