@@ -27,11 +27,11 @@ export class KhoahocService {
   }
 
   edit(body: any): Observable<any> {
-    return this.apiService.put('/courses/edit').pipe();
+    return this.apiService.put('/courses').pipe();
   }
 
   delete(id: number): Observable<any> {
-    return this.apiService.delete(`/courses/delete/${id}`).pipe();
+    return this.apiService.delete(`/courses/${id}`).pipe();
   }
 
 }
