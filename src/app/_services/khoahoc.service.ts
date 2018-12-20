@@ -15,7 +15,7 @@ export class KhoahocService {
   }
 
   getListKhoaHoc(body: any): Observable<KhoaHoc> {
-    return this.apiService.post('/courses', body).pipe();
+    return this.apiService.post('/courses/all-courses', body).pipe();
   }
 
   getById(id: number) {
