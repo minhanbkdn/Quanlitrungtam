@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { KhoaHoc } from 'app/_models/khoahoc.model';
 import { KhoahocService } from 'app/_services/khoahoc.service';
 import { QuanlihocService } from 'app/_services/quanlihoc.service';
@@ -31,10 +31,10 @@ export class ThemHocVienComponent implements OnInit {
     this.formAddHocVien = this.fb.group({
       Ho: ['', Validators.required],
       Ten: ['', Validators.required],
-      Email: ['', Validators.required],
-      SoDienThoai: ['',Validators.required],
+      Email: ['', [Validators.required, this.gmailValidator]],
+      SoDienThoai: ['',[Validators.required, Validators.pattern("^[0-9]{9,11}$")]],
       DaNopTien: [false, Validators.required],
-      SoTietDaHoc: ['0'],
+      SoTietDaHoc: ['',Validators.pattern("^[0-9]{1,2}$")],
       IdKhoaHoc: [Validators.required]
 
     })
@@ -47,7 +47,7 @@ export class ThemHocVienComponent implements OnInit {
           this.sharingService.notifInfo("Thêm học viên vào khoá học thành công");
           this.router.navigate(['/hoc-vien']);
         } else {
-          this.sharingService.notifError('Thêm học viên vào khoá học thất bại');
+          this.sharingService.notifError(result['MsgError']);
         }
       }, error => {
         this.sharingService.notifError(error);
@@ -64,5 +64,12 @@ export class ThemHocVienComponent implements OnInit {
         alert(error);
       }
     )
+  }
+
+  gmailValidator(formControl: FormControl) {
+    if(formControl.value.includes('@gmail.com')){
+      return null;
+    }
+    return {gmail: true};
   }
 }

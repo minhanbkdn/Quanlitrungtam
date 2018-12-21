@@ -27,6 +27,7 @@
                 <div class="form-group">
                   <label>Số điện thoại</label>
                   <input class="form-control" placeholder="sodienthoai" formControlName = "SoDienThoai" >
+                  <p  *ngIf="formEditUser.get('SoDienThoai').invalid && formEditUser.get('SoDienThoai').touched" [class.invalid]="true">Số điện thoại phải hợp lệ</p>
                 </div>
               </div>
             </div>
@@ -71,7 +72,7 @@
                 <div class="form-group">
                   <label>Ngày sinh</label>
                   <input type="date" class="form-control" formControlName="NgaySinh">
-                  <p  *ngIf="formEditUser.get('NgaySinh').invalid && formEditUser.get('NgaySinh').touched" [class.invalid]="true">Ngày sinh is required</p>
+                  <p  *ngIf="formEditUser.get('NgaySinh').invalid && formEditUser.get('NgaySinh').touched" [class.invalid]="true">Ngày sinh phải hợp lệ</p>
                 </div>
               </div>
 
