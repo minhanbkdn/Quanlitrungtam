@@ -21,7 +21,7 @@ export class DanhSachHocVienComponent implements OnInit {
 
   condition = {
     KeySearch: '',
-    IdKhoaHoc: 2,
+    IdKhoaHoc: 0,
     CurrentPage: 1,
     PageSize: 10,
   }
@@ -31,11 +31,12 @@ export class DanhSachHocVienComponent implements OnInit {
     private sharingService: SharingService,
     private khoahocService: KhoahocService
   ) {
+    this.getListKhoaHoc();
   }
 
 
-  async ngOnInit() {
-    await this.getListKhoaHoc();
+  ngOnInit() {
+    
     this.getHocVien();
   }
 
@@ -44,7 +45,7 @@ export class DanhSachHocVienComponent implements OnInit {
       result => {
         if (result['IsSuccess'] === true) {
           this.listHocVien = result['Data']['StudentList'];
-          this.totalPage = result['Data']['Paging']['TotalPage'];
+          this.totalPage = result['Data']['Paging']['TotalPages'];
           this.condition = result['Data']['Condition'];
         } else {
           alert("Get hoc vien that bai");
