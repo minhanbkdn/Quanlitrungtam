@@ -19,6 +19,7 @@ import { TaisanPipe } from './_pipes/taisan.pipe';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {HttpTokenInterceptor} from './interceptors/http.token.interceptor';
 import {FormsModule } from '@angular/forms';
+import { Error403Component } from './error/error403.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {FormsModule } from '@angular/forms';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    Error403Component,
   ],
   providers: [AuthGuard,
     {

@@ -47,17 +47,6 @@ export const ROUTES: RouteInfo[] = [
         child: []
     },
     {
-        path: '/giao-vien',
-        title: 'Quản lý giao viên',
-        icon: 'users_circle-08',
-        class: '',
-        type: 0,
-        isHasChild: false,
-        isParent: true,
-        isCollapsible: false,
-        child: []
-    },
-    {
         path: '/khoa-hoc',
         title: 'Quản lý khóa học',
         icon: 'education_hat',
@@ -100,88 +89,8 @@ export const ROUTES: RouteInfo[] = [
         isParent: true,
         isCollapsible: false,
         child: []
-    },
+    }
 
-    {
-        path: '',
-        title: 'Quản lý tài sản',
-        icon: 'business_bank',
-        class: 'parent',
-        type: 1,
-        isHasChild: true,
-        isParent: true,
-        isCollapsible: false,
-        child: []
-    },
-    {
-        path: '/tai-san',
-        title: 'Tài sản',
-        icon: 'business_bank',
-        class: '',
-        type: 1,
-        isHasChild: false,
-        isParent: false,
-        isCollapsible: false,
-        child: []
-    },
-    {
-        path: '/nhom-tai-san',
-        title: 'Nhóm tài sản',
-        icon: 'business_bank',
-        class: '',
-        type: 1,
-        isHasChild: false,
-        isParent: false,
-        isCollapsible: false,
-        child: []
-    },
-
-    {
-        path: '/de-xuat',
-        title: 'Quản lý đề xuất',
-        icon: 'business_bank',
-        class: '',
-        type: 0,
-        isHasChild: false,
-        isParent: true,
-        isCollapsible: false,
-        child: []
-    },
-
-    {
-        path: '/ke-hoach',
-        title: 'Quản lý kế hoạch',
-        icon: 'business_bank',
-        class: '',
-        type: 0,
-        isHasChild: false,
-        isParent: true,
-        isCollapsible: false,
-        child: []
-    },
-
-    {
-        path: '',
-        title: 'Quản lý thống kê',
-        icon: 'business_bank',
-        class: 'parent',
-        type: 4,
-        isHasChild: true,
-        isParent: true,
-        isCollapsible: false,
-        child: []
-    },
-    {
-        path: '/thong-ke-tai-san',
-        title: 'Thống kê tài sản',
-        icon: 'business_money-coins',
-        class: '',
-        type: 4,
-        isHasChild: false,
-        isParent: false,
-        isCollapsible: false,
-        child: []
-    },
 
     // {path: '/icons', title: 'Icons', icon: 'education_atom', class: '', type: 6, isHasChild: false, child: []},
     // {path: '/maps', title: 'Maps', icon: 'location_map-big', class: '', type: 6, isHasChild: false, child: []},
