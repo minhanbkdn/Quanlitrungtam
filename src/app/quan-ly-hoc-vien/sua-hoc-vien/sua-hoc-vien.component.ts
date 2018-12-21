@@ -57,7 +57,7 @@ export class SuaHocVienComponent implements OnInit {
       result => {
         if(result['IsSuccess'] === true) {
           this.sharingService.notifInfo("Sửa  thành công");
-          this.router.navigate(['/khoa-hoc']);
+          this.router.navigate(['/hoc-vien']);
         } else {
           this.sharingService.notifError('Sửa thất bại');
         }

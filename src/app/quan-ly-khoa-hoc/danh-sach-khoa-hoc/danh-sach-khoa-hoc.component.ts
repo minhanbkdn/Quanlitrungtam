@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KhoaHoc } from 'app/_models/khoahoc.model';
 import { KhoahocService } from 'app/_services/khoahoc.service';
+import { SharingService } from 'app/_services/sharing.service';
 
 @Component({
   selector: 'app-danh-sach-khoa-hoc',
@@ -20,6 +21,7 @@ export class DanhSachKhoaHocComponent implements OnInit {
   listKhoaHoc: KhoaHoc[];
   constructor(
     private khoaHocService: KhoahocService,
+    private sharingServie: SharingService
   ) { }
 
   ngOnInit() {
@@ -43,7 +45,23 @@ export class DanhSachKhoaHocComponent implements OnInit {
         alert(error);
       }
     )
-  }  
+  }
+
+  delete(id: number) {
+    this.khoaHocService.delete(id).subscribe(
+      result => {
+        if(result['IsSuccess'] === true){
+          this.sharingServie.notifInfo("Xoá khoá học thành công");
+          this.listKhoaHoc = this.listKhoaHoc.filter(item => item.Id !== id)
+        }else{
+          this.sharingServie.notifError("Xoá khoá học thất bại ");
+        }
+      },
+      error => {
+        alert(error);
+      }
+    )
+  }
 
   setItemPerPage() {
     this.currentPage = 1;

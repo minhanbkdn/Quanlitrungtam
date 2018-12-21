@@ -16,7 +16,7 @@ export class ThemNguoiDungComponent implements OnInit {
 
     
     userInfo: AddUser;
-    listGroup: Group;
+    listGroup: Group[];
     formAddUser: FormGroup;
     constructor(
         private groupService: GroupService,
@@ -45,9 +45,11 @@ export class ThemNguoiDungComponent implements OnInit {
   }
 
 
-  onSubmit(value: any) {
-    console.log(value);
-    this.userManagerService.add(value).subscribe(
+  onSubmit() {
+    console.log(this.formAddUser.value);
+
+    console.log('gioitnh:' + this.formAddUser.get('GioiTinh'));
+    this.userManagerService.add(this.formAddUser.value).subscribe(
       result => {
         console.log(result);
         if (+result['Code'] === 200) {
