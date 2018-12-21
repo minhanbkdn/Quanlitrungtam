@@ -8,7 +8,7 @@
           <h4 class="card-title">Sửa Khoá học </h4>
         </div>
         <div class="card-body">
-          <form (ngSubmit)="onSubmit()" [formGroup]="formSuaKhoaHoc">
+          <form *ngIf="khoaHocInfo" (ngSubmit)="onSubmit()" [formGroup]="formSuaKhoaHoc">
             <div class="row">
               <div class="col-md-4 pr-1">
                 <div class="form-group">

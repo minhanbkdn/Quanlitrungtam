@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 export class ThemHocVienComponent implements OnInit {
 
 
-  PageSize: 50;
   formAddHocVien: FormGroup;
   listKhoaHoc: KhoaHoc[] = [];
 
