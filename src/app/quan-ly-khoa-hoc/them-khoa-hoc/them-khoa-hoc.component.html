@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Thêm Group</h4>
+          <h4 class="card-title">Thêm Khoá học </h4>
         </div>
         <div class="card-body">
           <form (ngSubmit)="onSubmit()" [formGroup]="formAddKhoaHoc">
@@ -87,17 +87,27 @@
             <div class="row">
               <div class="col-md-4 pr-1">
                 <div class="form-group">
-                  <label for="exampleTextarea">Tóm tắt</label>
-                  <input class="form-control" formControlName="TomTat">
+                  <label for="exampleTextarea">Beauty ID</label>
+                  <input class="form-control" formControlName="BeautyId">
                 </div>
               </div>
               <div class="col-md-4 pr-1">
                 <div class="form-group">
+                  <label for="exampleTextarea">Tóm tắt</label>
+                  <input class="form-control" formControlName="TomTat">
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12 pr-1">
+                <div class="form-group">
                   <label for="exampleTextarea">Chi tiết</label>
-                  <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                  <textarea class="form-control" id="exampleTextarea" rows="3" formControlName="ChiTiet"></textarea>
                 </div>
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-4 pr-1">
                 <div class="form-group">
@@ -113,8 +123,8 @@
             <div class="row">
               <div class="col-md-4 pr-1">
                 <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <input type="file" id="exampleInputFile" aria-describedby="fileHelp">
+                  <label for="exampleInputFile">Ảnh minh hoạ</label>
+                  <input type="file" id="exampleInputFile" aria-describedby="fileHelp" formControlName="AnhMinhHoa">
                   <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for
                     the above input. It's a bit lighter and easily wraps to a new line.</small>
                 </div>
