@@ -7,6 +7,7 @@ import { KhoahocService } from 'app/_services/khoahoc.service';
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-danh-sach-hoc-vien',
@@ -70,6 +71,22 @@ export class DanhSachHocVienComponent implements OnInit {
     )
   }
 
+  delete(id: number) {
+    this.quanlihocService.delete(id).subscribe(
+      result => {
+        if(result['IsSuccess'] === true){
+          this.sharingService.notifInfo('Xoá học viên thành công');
+          this.listHocVien = this.listHocVien.filter(x => x.Id !== id);
+        }else{
+          this.sharingService.notifError(result['MsgError']);
+      }
+    },
+    error => {
+      alert(error);
+    }
+    )
+
+  } 
 
   setItemPerPage() {
     this.condition.CurrentPage = 1;
