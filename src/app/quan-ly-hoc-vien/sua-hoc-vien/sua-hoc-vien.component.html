@@ -34,6 +34,8 @@
                 <div class="form-group">
                   <label>Số điện thoại</label>
                   <input class="form-control" placeholder="phone_number" formControlName="SoDienThoai">
+                  <p *ngIf="formAddHocVien.get('SoDienThoai').invalid && formAddHocVien.get('SoDienThoai').touched" [class.invalid]="true">Yêu
+                    cầu nhập số điện thoại và phải hợp lệ</p>
                 </div>
               </div>
             </div>
@@ -44,7 +46,7 @@
                   <label>Email</label>
                   <input class="form-control" formControlName="Email">
                   <p *ngIf="formAddHocVien.get('Email').invalid && formAddHocVien.get('Email').touched" [class.invalid]="true">Yêu
-                    cầu nhập email</p>
+                    cầu nhập email và email phải hợp lệ</p>
                 </div>
               </div>
 
@@ -62,6 +64,9 @@
                 <div class="form-group">
                   <label>Số tiết đã học</label>
                   <input class="form-control" formControlName="SoTietDaHoc">
+                  <p *ngIf="formAddHocVien.get('SoTietDaHoc').invalid && formAddHocVien.get('SoTietDaHoc').touched" [class.invalid]="true">
+                    Số tiết học phải hợp lệ
+                  </p>
                 </div>
               </div>
             </div>
