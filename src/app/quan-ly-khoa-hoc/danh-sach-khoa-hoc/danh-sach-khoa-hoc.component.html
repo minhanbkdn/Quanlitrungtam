@@ -38,7 +38,13 @@
                 </select>
               </div>
             </div>
-
+            <div class="col-md-6 pr-1 flex-column-reverse">
+              <div class="form-group">
+                <button class="btn btn btn-lg btn-success float-right" routerLink="/khoa-hoc/them-khoa-hoc">Thêm
+                  mới
+                </button>
+              </div>
+            </div>
           </div>
           <div class="table-responsive">
             <table class="table table-bordered table-hover table-striped">
@@ -54,7 +60,7 @@
                 <tr *ngFor="let item of listKhoaHoc">
                   <td>{{item.Id}}</td>
                   <td>{{item.TenKhoaHoc}}</td>
-                  <td><img [src] = "item.AnhMinhHoa" alt="item.AnhMinhHoa" width="50px" height="50px"/></td>
+                  <td><img [src]="item.AnhMinhHoa" alt="item.AnhMinhHoa" width="50px" height="50px" /></td>
                   <td>{{ item.NgayKhaiGiang | date:'dd/MM/yyyy' }}</td>
                   <td>{{item.HocPhi}}</td>
                   <td>
@@ -74,8 +80,7 @@
           <nav aria-label="Page navigation">
             <ul class="pagination pagination justify-content-end">
               <li class="page-item">
-                <button class="page-link" (click)="previousPage()" [disabled]="currentPage === 1"
-                  [class.pag-disable]="currentPage=== 1">«
+                <button class="page-link" (click)="previousPage()" [disabled]="currentPage === 1" [class.pag-disable]="currentPage=== 1">«
                 </button>
               </li>
               <li class="page-item" *ngFor="let item of arrayOne(); let index = index ">

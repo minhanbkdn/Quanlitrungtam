@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { HocVien } from 'app/_models/hocvien.model';
+import { QuanlihocService } from 'app/_services/quanlihoc.service';
+import { SharingService } from 'app/_services/sharing.service';
+import { KhoaHoc } from 'app/_models/khoahoc.model';
+import { KhoahocService } from 'app/_services/khoahoc.service';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-danh-sach-hoc-vien',
@@ -7,9 +15,83 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DanhSachHocVienComponent implements OnInit {
 
-  constructor() { }
+  listHocVien: HocVien[] = [];
+  listKhoaHoc: KhoaHoc[] = [];
+  totalPage: number;
 
-  ngOnInit() {
+  condition = {
+    KeySearch: '',
+    IdKhoaHoc: 2,
+    CurrentPage: 1,
+    PageSize: 10,
+  }
+
+  constructor(
+    private quanlihocService: QuanlihocService,
+    private sharingService: SharingService,
+    private khoahocService: KhoahocService
+  ) {
+  }
+
+
+  async ngOnInit() {
+    await this.getListKhoaHoc();
+    this.getHocVien();
+  }
+
+  getHocVien() {
+    this.quanlihocService.getListHocVien(this.condition).subscribe(
+      result => {
+        if (result['IsSuccess'] === true) {
+          this.listHocVien = result['Data']['StudentList'];
+          this.totalPage = result['Data']['Paging']['TotalPage'];
+          this.condition = result['Data']['Condition'];
+        } else {
+          alert("Get hoc vien that bai");
+        }
+      },
+      error => {
+        alert(error);
+      }
+    )
+  }
+
+
+  getListKhoaHoc() {
+    return this.khoahocService.getListKhoaHoc(null).toPromise().then(
+      result => {
+        this.listKhoaHoc = result['Data']['CourseList'];
+        console.log(this.listKhoaHoc);
+      },
+      error => {
+        alert(error);
+      }
+    )
+  }
+
+
+  setItemPerPage() {
+    this.condition.CurrentPage = 1;
+    this.getHocVien();
+  }
+
+  arrayOne(): any[] {
+    return Array(this.totalPage);
+  }
+
+  changePage(page: number) {
+    this.condition.CurrentPage = page;
+    this.getHocVien();
+  }
+
+  previousPage() {
+    this.condition.CurrentPage--;
+    this.getHocVien();
+  }
+
+  nextPage() {
+    this.condition.CurrentPage++;
+    this.getHocVien();
   }
 
 }

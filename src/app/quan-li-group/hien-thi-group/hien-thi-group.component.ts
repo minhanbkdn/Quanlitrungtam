@@ -59,7 +59,7 @@ export class HienThiGroupComponent implements OnInit {
           this.totalPage = result['Data']['Paging']['TotalPages'];
           this.condition = result['Data']['Condition'];
         }else{
-          alert('Xoá không thành công');
+          alert('Get khoa hoc that bai');
         }
       },
       error => {
