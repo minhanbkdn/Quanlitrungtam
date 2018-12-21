@@ -54,13 +54,20 @@
                 <div class="form-group">
                   <label>Thời gian bắt đầu</label>
                   <input class="form-control" type="date" formControlName="ThoiGianBatDau">
+                  <p *ngIf="formAddKhoaHoc.get('ThoiGianBatDau').invalid && formAddKhoaHoc.get('ThoiGianBatDau').touched"
+                  [class.invalid]="true">
+                  Yêu cầu nhập thời gian bắt đầu.
+                </p>
                 </div>
               </div>
               <div class="col-md-4 pr-1">
                 <div class="form-group">
                   <label>Thời gian kết thúc</label>
                   <input class="form-control" type="date" formControlName="ThoiGianKetThuc">
-                  <p *ngIf="formAddKhoaHoc.errors">{{ form.errors?.dates | json }}</p>
+                  <p *ngIf="formAddKhoaHoc.get('ThoiGianKetThuc').invalid && formAddKhoaHoc.get('ThoiGianKetThuc').touched"
+                  [class.invalid]="true">
+                  Yêu cầu nhập thời gian kết thúc.
+                </p>
                 </div>
               </div>
             </div>
@@ -107,6 +114,8 @@
                 <div class="form-group">
                   <label for="exampleTextarea">Chi tiết</label>
                   <textarea class="form-control" id="exampleTextarea" rows="3" formControlName="ChiTiet"></textarea>
+                  <p *ngIf="formAddKhoaHoc.get('ChiTiet').invalid && formAddKhoaHoc.get('ChiTiet').touched"
+                  [class.invalid]="true">Yêu cầu nhập chi tiết</p>
                 </div>
               </div>
             </div>
