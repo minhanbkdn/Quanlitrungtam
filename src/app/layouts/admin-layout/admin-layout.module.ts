@@ -31,7 +31,6 @@ import {NhomTaiSanComponent} from '../../quan-ly-nhom-tai-san/nhom-tai-san/nhom-
 import {DeXuatComponent} from '../../quan-ly-de-xuat/de-xuat/de-xuat.component';
 import {TaisanPipe} from '../../_pipes/taisan.pipe';
 import {ThongKeTaiSanComponent} from '../../thong-ke/thong-ke-tai-san/thong-ke-tai-san.component';
-
 import {HienThiDsGiaoVienComponent} from '../../quan-li-giao-vien/hien-thi-ds-giao-vien/hien-thi-ds-giao-vien.component';
 import {SuaGiaoVienComponent} from '../../quan-li-giao-vien/sua-giao-vien/sua-giao-vien.component';
 import {ThemGiaoVienComponent} from '../../quan-li-giao-vien/them-giao-vien/them-giao-vien.component';
