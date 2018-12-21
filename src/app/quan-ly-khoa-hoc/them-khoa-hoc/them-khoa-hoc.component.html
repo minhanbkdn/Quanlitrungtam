@@ -38,6 +38,7 @@
                   <input class="form-control" formControlName="HocPhi">
                   <p *ngIf="formAddKhoaHoc.get('HocPhi').invalid && formAddKhoaHoc.get('HocPhi').touched"
                     [class.invalid]="true">
+                    Học phí phải hợp lệ
                 </div>
               </div>
 
@@ -59,6 +60,7 @@
                 <div class="form-group">
                   <label>Thời gian kết thúc</label>
                   <input class="form-control" type="date" formControlName="ThoiGianKetThuc">
+                  <p *ngIf="formAddKhoaHoc.errors">{{ form.errors?.dates | json }}</p>
                 </div>
               </div>
             </div>
@@ -86,12 +88,16 @@
                 <div class="form-group">
                   <label for="exampleTextarea">Beauty ID</label>
                   <input class="form-control" formControlName="BeautyId">
+                  <p *ngIf="formAddKhoaHoc.get('BeautyId').invalid && formAddKhoaHoc.get('BeautyId').touched"
+                    [class.invalid]="true">Yêu cầu nhập beauty-Id</p>
                 </div>
               </div>
               <div class="col-md-4 pr-1">
                 <div class="form-group">
                   <label for="exampleTextarea">Tóm tắt</label>
                   <input class="form-control" formControlName="TomTat">
+                  <p *ngIf="formAddKhoaHoc.get('TomTat').invalid && formAddKhoaHoc.get('TomTat').touched"
+                    [class.invalid]="true">Yêu cầu nhập tên khoá học</p>
                 </div>
               </div>
 

@@ -20,7 +20,7 @@ export class ThemKhoaHocComponent implements OnInit {
     private sharingService: SharingService,
     private router: Router,
     private fb: FormBuilder
-  ) { 
+  ) {
     this.getListGiangvien();
   }
 
@@ -29,8 +29,8 @@ export class ThemKhoaHocComponent implements OnInit {
       BeautyId: ['', Validators.required],
       TenKhoaHoc: ['', Validators.required],
       AnhMinhHoa: ["https://all.ie/wp-content/uploads/2015/09/Evening_English_1-1150x647.jpg"],
-      NgayKhaiGiang: ['',Validators.required],
-      HocPhi: ['',Validators.required],
+      NgayKhaiGiang: ['', Validators.required],
+      HocPhi: ['', [Validators.required, Validators.pattern("^[0-9]{1,9}$"), Validators.minLength(2)]],
       ThoiGianBatDau: [Validators.required],
       ThoiGianKetThuc: [Validators.required],
       IdGiangVienDungLop: [Validators.required],
@@ -38,19 +38,22 @@ export class ThemKhoaHocComponent implements OnInit {
       HienThi: [true, Validators.required],
       TomTat: ['', Validators.required],
       ChiTiet: ['', Validators.required],
-      LichHoc: ['', Validators.required]     
-    })
+      LichHoc: ['', Validators.required]
+    }, {
+        Validators: this.dateLessThan('ThoiGianBatDau', 'ThoiGianKetThuc')
+      }
+    )
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log("ok:" + this.formAddKhoaHoc.value);
     this.khoahocService.add(this.formAddKhoaHoc.value).subscribe(
       result => {
-        if(result['IsSuccess'] === true) {
+        if (result['IsSuccess'] === true) {
           this.sharingService.notifInfo("Thêm khoá học thành công");
           this.router.navigate(['/khoa-hoc']);
         } else {
-          this.sharingService.notifError('Thêm khoá học thất bại');
+          this.sharingService.notifError(result['MsgError']);
         }
       }, error => {
         this.sharingService.notifError(error);
@@ -68,5 +71,20 @@ export class ThemKhoaHocComponent implements OnInit {
       }
     )
   }
+
+  dateLessThan(from: string, to: string) {
+    return (group: FormGroup): { [key: string]: any } => {
+      let f = group.controls[from]
+      let t = group.controls[to];
+      if (f.value > t.value) {
+        console.log("dfdfd");
+        return {
+          dates: "Date from should be less than Date to"
+        };
+      }
+      return {};
+    }
+  }
+
 
 }
