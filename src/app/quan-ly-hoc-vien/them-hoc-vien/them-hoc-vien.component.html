@@ -1,3 +1,82 @@
-<p>
-  them-hoc-vien works!
-</p>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Thêm học viên vào khoá học</h4>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="formAddHocVien">
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Họ</label>
+                  <input class="form-control" formControlName="Ho"  >
+                  <p  *ngIf="formAddHocVien.get('Ho').invalid && formAddHocVien.get('Ho').touched" [class.invalid]="true">Yêu cầu nhập họ</p>
+                </div>
+              </div>
+            
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Tên</label>
+                  <input class="form-control" formControlName = "Ten">
+                  <p  *ngIf="formAddHocVien.get('Ten').invalid && formAddHocVien.get('Ten').touched" [class.invalid]="true">Yêu cầu nhập tên</p>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Số điện thoại</label>
+                  <input class="form-control" placeholder="phone_number" formControlName = "SoDienThoai">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input class="form-control" formControlName = "Email">
+                  <p  *ngIf="formAddHocVien.get('Email').invalid && formAddHocVien.get('Email').touched" [class.invalid]="true">Yêu cầu nhập email</p>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Đã nộp tiền</label>
+                  <select class="form-control" formControlName="DaNopTien">
+                    <option value="true" selected>Đã nộp</option>
+                    <option value="false">Chưa</option>
+                  </select>                  
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Số tiết đã học</label>
+                  <input class="form-control" formControlName = "SoTietDaHoc">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Khoá học</label>
+                  <select  class="form-control" formControlName="IdKhoaHoc">
+                    <option *ngFor="let item of listKhoaHoc" [value]="item.Id">{{item.TenKhoaHoc}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-lg btn-info" type="submit" [class.unSubmit]="formAddHocVien.invalid" [disabled]="formAddHocVien.invalid">Thêm khoá hoc</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
