@@ -31,20 +31,19 @@ export class SuaNguoiDungComponent implements OnInit {
   }
 
   async ngOnInit(){
-    this.getUser();
+    await this.getUser();
     const id = this.route.snapshot.paramMap.get('id');
-    await new Promise(r => setTimeout(r, 1500));  
     this.formEditUser = this.fb.group({
       
       Username: [ {value: this.userInfo.Username, disabled: true}, Validators.required],
       Ho: [this.userInfo.Ho, Validators.required],
       Ten: [this.userInfo.Ten, Validators.required],
       Email: [ {value:this.userInfo.Email, disabled: true}, Validators.required, Validators.email],
-      NgaySinh: [this.transform(this.userInfo.NgaySinh), Validators.required],
-      GioiTinh: [this.userInfo.GioiTinh, Validators.required],
+      NgaySinh: [this.transform(this.userInfo.NgaySinh), [Validators.required,this.ngaySinhValidator] ],
+      GioiTinh: [ this.userInfo.GioiTinh, Validators.required],
       DiaChi: [this.userInfo.DiaChi],
       IdGroup: [this.userInfo.IdGroup , Validators.required],
-      SoDienThoai: [this.userInfo.SoDienThoai, Validators.required],
+      SoDienThoai: [this.userInfo.SoDienThoai, Validators.pattern("^[0-9]{9,11}$")],
       Id: [id]
     })
   }
@@ -92,6 +91,15 @@ export class SuaNguoiDungComponent implements OnInit {
         this.listGroup = result['Data']['GroupList'];
       }
     )
+  }
+
+  ngaySinhValidator(formControl: FormControl) {
+    let y1 = new Date(formControl.value).getFullYear();
+    let y2 = new Date().getFullYear();
+    if ((y2-y1) >5) {
+      return null;
+    }
+    return {NgaySinh: true};
   }
 
 }

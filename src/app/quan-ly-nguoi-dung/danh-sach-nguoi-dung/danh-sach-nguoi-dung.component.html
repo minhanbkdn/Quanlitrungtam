@@ -101,10 +101,10 @@
                             <tbody>
                                 <tr *ngFor="let objGV of listUser">
                                     <td #id>{{objGV.Id}}</td>
-                                    <td>{{objGV.Avatar }</td>
+                                    <td><img [src] ="objGV.Avatar" width="50px" height="50px"/></td>
                                     <td>{{objGV.Ho}} {{objGV.Ten}}</td>
                                     <td>{{objGV.SoDienThoai}}</td>
-                                    <td>{{objGV.NgaySinh}}</td>
+                                    <td>{{objGV.NgaySinh | date: 'dd-MM-yyyy' }}</td>
                                     <td>
                                         <button class="btn btn-md btn-info" routerLink="/nguoi-dung/sua-nguoi-dung/{{objGV.Id}}"><i class="now-ui-icons travel_info"></i></button>
                                         <button class="btn btn-md btn-warning" (click)="deleteUser(objGV.Id)"><i class="now-ui-icons ui-1_simple-delete"></i></button>

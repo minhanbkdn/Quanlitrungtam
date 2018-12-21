@@ -1,3 +1,54 @@
-<p>
-  sua-group works!
-</p>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Sửa Group</h4>
+        </div>
+        <div class="card-body">
+          <form *ngIf="groupInfo" (ngSubmit)="onSubmit()" [formGroup]="formEditGroup" >
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Tên Group</label>
+                  <input class="form-control" formControlName="GroupName">
+                  <p *ngIf="formEditGroup.get('GroupName').invalid && formEditGroup.get('GroupName').touched"
+                    [class.invalid]="true">Yêu cầu nhập tên form-group</p>
+                </div>
+              </div>
+
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Mô tả</label>
+                  <input class="form-control"  formControlName="MoTa">
+                  <p *ngIf="formEditGroup.get('MoTa').invalid && formEditGroup.get('MoTa').touched" [class.invalid]="true">
+                    Yêu cầu nhập mô tả
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>IS Default</label>
+                  <input class="form-control" type="checkbox" formControlName="IsDefault">
+                </div>
+              </div>
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>IS System</label>
+                  <input class="form-control" type="checkbox" formControlName="IsSystem">
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-lg btn-info" type="submit" [class.unSubmit]="formEditGroup.invalid" [disabled]="formEditGroup.invalid">Sửa</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

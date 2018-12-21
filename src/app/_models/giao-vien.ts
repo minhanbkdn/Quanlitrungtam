@@ -6,4 +6,6 @@ export class GiaoVien {
   DiaChi: string;
   NgaySinh: Date;
   ThongTinBoSung: string;
+  IdAccount: number;
+  TenGiangVien: string;
 }

@@ -39,15 +39,15 @@ export class GroupService {
 
     }
     getById(id: number): Observable<any> {
-        return this.apiService.get(`/user/get-user/${id}`).pipe()
+        return this.apiService.get(`/group/get/${id}`).pipe()
     }
 
     add(body: any): Observable<any> {
-        return this.apiService.post('/user/add-user',body).pipe()
+        return this.apiService.post('/group/post',body).pipe()
     }
 
     edit(body: any): Observable<any> {
-        return this.apiService.post('/user/edit-user', body).pipe()
+        return this.apiService.put('/group/put', body).pipe()
     }
 
     delete(id: number): Observable<any> {

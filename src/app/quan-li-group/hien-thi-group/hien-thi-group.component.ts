@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from 'app/_models/group.model';
 import { GroupService } from 'app/_services/group.service';
+import { SharingService } from 'app/_services/sharing.service';
 
 @Component({
   selector: 'app-hien-thi-group',
@@ -22,7 +23,10 @@ export class HienThiGroupComponent implements OnInit {
       TrangThai: ''
   };
 
-  constructor(private groupService: GroupService) {
+  constructor(
+      private groupService: GroupService,
+      private sharingService: SharingService
+    ) {
   }
 
   async ngOnInit() {
@@ -36,11 +40,14 @@ export class HienThiGroupComponent implements OnInit {
           result => {
               if (result['IsSuccess'] === true) {
                   this.listGroup = this.listGroup.filter(item => item.Id !== id);
+                  this.sharingService.notifInfo('Xoá group thành công');
               } else {
-                  alert('Xoá không thành công!');
+                this.sharingService.notifError('Xoá group thất bại');
               }
           },
-          error => alert(error)
+          error => {
+            this.sharingService.notifError('Xoá group thất bại');
+          }
       )
   }
 
@@ -52,7 +59,7 @@ export class HienThiGroupComponent implements OnInit {
           this.totalPage = result['Data']['Paging']['TotalPages'];
           this.condition = result['Data']['Condition'];
         }else{
-          alert('Xoá không thành công');
+          alert('Get khoa hoc that bai');
         }
       },
       error => {

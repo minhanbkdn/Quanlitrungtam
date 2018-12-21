@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
@@ -18,7 +17,8 @@ import {ToastrModule} from 'ngx-toastr';
 import { TaisanPipe } from './_pipes/taisan.pipe';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {HttpTokenInterceptor} from './interceptors/http.token.interceptor';
-import {FormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
+import { Error403Component } from './error/error403.component';
 
 
 @NgModule({
@@ -37,6 +37,7 @@ import {FormsModule } from '@angular/forms';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    Error403Component,
   ],
   providers: [AuthGuard,
     {
