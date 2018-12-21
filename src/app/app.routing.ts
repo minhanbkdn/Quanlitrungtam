@@ -7,6 +7,7 @@ import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.componen
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
 import {FormsModule} from '@angular/forms';
+import { Error403Component } from './error/error403.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,11 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+
+    {
+        path: '403',
+        component: Error403Component
     },
     {
         path: '**',

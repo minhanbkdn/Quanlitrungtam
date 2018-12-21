@@ -45,7 +45,7 @@ export class ThemHocVienComponent implements OnInit {
       result => {
         if(result['IsSuccess'] === true) {
           this.sharingService.notifInfo("Thêm học viên vào khoá học thành công");
-          this.router.navigate(['/khoa-hoc']);
+          this.router.navigate(['/hoc-vien']);
         } else {
           this.sharingService.notifError('Thêm học viên vào khoá học thất bại');
         }

@@ -52,8 +52,8 @@
                 <div class="form-group">
                   <label>Giới Tính</label>
                   <select class="form-control" formControlName="GioiTinh">
-                    <option value="true" [selected] = "GioiTinh">Nam</option>
-                    <option value="false" [selected] = "GioiTinh">Nữ</option>
+                    <option value="true" [selected] = "String(GioiTinh) == 'true' ">Nam</option>
+                    <option value="false" [selected] = "String(GioiTinh) == 'false' ">Nữ</option>
                   </select>
                 </div>
               </div>

@@ -40,7 +40,7 @@ export class SuaNguoiDungComponent implements OnInit {
       Ten: [this.userInfo.Ten, Validators.required],
       Email: [ {value:this.userInfo.Email, disabled: true}, Validators.required, Validators.email],
       NgaySinh: [this.transform(this.userInfo.NgaySinh), Validators.required],
-      GioiTinh: [this.userInfo.GioiTinh, Validators.required],
+      GioiTinh: [ this.userInfo.GioiTinh, Validators.required],
       DiaChi: [this.userInfo.DiaChi],
       IdGroup: [this.userInfo.IdGroup , Validators.required],
       SoDienThoai: [this.userInfo.SoDienThoai, Validators.required],
