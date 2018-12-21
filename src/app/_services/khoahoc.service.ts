@@ -18,7 +18,7 @@ export class KhoahocService {
   }
 
   getById(id: number) {
-    return this.apiService.get(`/courses/get/${id}`).pipe();
+    return this.apiService.get(`/courses/${id}`).pipe();
   }
 
   add(body: any): Observable<any> {
