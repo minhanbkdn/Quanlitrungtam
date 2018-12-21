@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class KhoahocService {
 
-  list
   constructor(
     private apiService: ApiService,
   ) {
@@ -23,15 +22,20 @@ export class KhoahocService {
   }
 
   add(body: any): Observable<any> {
-    return this.apiService.post('/courses/new-course').pipe();
+    console.log("Body: " + JSON.stringify(body))
+    return this.apiService.post('/courses/new-course', body).pipe();
   }
 
   edit(body: any): Observable<any> {
-    return this.apiService.put('/courses').pipe();
+    return this.apiService.put('/courses', body).pipe();
   }
 
   delete(id: number): Observable<any> {
     return this.apiService.delete(`/courses/${id}`).pipe();
+  }
+
+  getAllGiangVien(): Observable<any>{
+    return this.apiService.get('/courses/all-teacher').pipe();
   }
 
 }
