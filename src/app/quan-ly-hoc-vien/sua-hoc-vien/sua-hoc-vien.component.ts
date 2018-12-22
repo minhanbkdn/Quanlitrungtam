@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { KhoaHoc } from 'app/_models/khoahoc.model';
 import { KhoahocService } from 'app/_services/khoahoc.service';
 import { QuanlihocService } from 'app/_services/quanlihoc.service';
@@ -40,10 +40,10 @@ export class SuaHocVienComponent implements OnInit {
         this.formAddHocVien = this.fb.group({
           Ten: [this.hocvienInfo.Ten, Validators.required],
           Ho: [this.hocvienInfo.Ho, Validators.required],
-          Email: [this.hocvienInfo.Email, Validators.required],
-          SoDienThoai: [this.hocvienInfo.SoDienThoai,Validators.required],
+          Email: [this.hocvienInfo.Email, [Validators.required, this.gmailValidator]],
+          SoDienThoai: [this.hocvienInfo.SoDienThoai,[Validators.required, Validators.pattern("^[0-9]{9,11}$")]],
           DaNopTien: [this.hocvienInfo.DaNopTien, Validators.required],
-          SoTietDaHoc: [this.hocvienInfo.SoTietDaHoc],
+          SoTietDaHoc: [this.hocvienInfo.SoTietDaHoc, Validators.pattern("^[0-9]{1,2}$")],
           IdKhoaHoc: [this.hocvienInfo.IdKhoaHoc,Validators.required],
           Id: [id]
         })
@@ -59,7 +59,7 @@ export class SuaHocVienComponent implements OnInit {
           this.sharingService.notifInfo("Sửa  thành công");
           this.router.navigate(['/hoc-vien']);
         } else {
-          this.sharingService.notifError('Sửa thất bại');
+          this.sharingService.notifError(result['MsgError']);
         }
       }, error => {
         this.sharingService.notifError(error);
@@ -76,5 +76,12 @@ export class SuaHocVienComponent implements OnInit {
         alert(error);
       }
     )
+  }
+
+  gmailValidator(formControl: FormControl) {
+    if(formControl.value.includes('@gmail.com')){
+      return null;
+    }
+    return {gmail: true};
   }
 }

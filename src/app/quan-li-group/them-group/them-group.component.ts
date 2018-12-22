@@ -33,11 +33,11 @@ export class ThemGroupComponent implements OnInit {
     console.log(this.formAddGroup.value);
     this.groupService.add(this.formAddGroup.value).subscribe(
       result => {
-        if(+result['Code'] === 200) {
+        if(result['IsSuccess'] === true) {
           this.sharingService.notifInfo("Thêm Group thành công");
           this.router.navigate(['/group']);
         } else {
-          this.sharingService.notifError('Thêm Group thất bại');
+          this.sharingService.notifError(result['MsgError']);
         }
       }, error => {
         this.sharingService.notifError(error);

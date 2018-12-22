@@ -15,7 +15,7 @@
                   <label>Tên Group</label>
                   <input class="form-control" placeholder="group_name" formControlName="GroupName">
                   <p *ngIf="formAddGroup.get('GroupName').invalid && formAddGroup.get('GroupName').touched"
-                    [class.invalid]="true">Group Name is required and valid</p>
+                    [class.invalid]="true">Yêu cầu nhập tên group</p>
                 </div>
               </div>
 
@@ -23,8 +23,9 @@
                 <div class="form-group">
                   <label>Mô tả</label>
                   <input class="form-control"  formControlName="MoTa">
-                  <p *ngIf="formAddGroup.get('MoTa').invalid && formAddGroup.get('MoTa').touched" [class.invalid]="true">Mô tả
-                    is required </p>
+                  <p *ngIf="formAddGroup.get('MoTa').invalid && formAddGroup.get('MoTa').touched" [class.invalid]="true">
+                    Yêu cầu nhập mô tả
+                  </p>
                 </div>
               </div>
             </div>
