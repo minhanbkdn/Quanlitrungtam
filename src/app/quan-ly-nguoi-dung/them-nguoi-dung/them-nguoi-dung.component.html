@@ -105,7 +105,7 @@
                 <div class="form-group">
                   <label>Confirm Password</label>
                   <input type="password" class="form-control" formControlName="ConfirmPassword">
-                  <p  *ngIf="formAddUser.get('ConfirmPassword').invalid && formAddUser.get('ConfirmPassword').touched" [class.invalid]="true">Yêu cầu nhập Confirm Password</p>
+                  <p  *ngIf="formAddUser.get('ConfirmPassword').invalid && formAddUser.get('ConfirmPassword').touched" [class.invalid]="true">Yêu cầu phải trùng Password</p>
                 </div>
               </div>
             </div>

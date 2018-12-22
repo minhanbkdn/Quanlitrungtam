@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddUser } from 'app/_models/add-user.model';
 import {ApiService} from '../../_services/api.service';
 import {FormGroup, FormControl, FormBuilder, Validators, EmailValidator} from '@angular/forms';
+import { RxwebValidators,RxFormBuilder } from "@rxweb/reactive-form-validators"
 import { UserManagerService } from 'app/_services/user-manager-service';
 import {SharingService} from '../../_services/sharing.service';
 import { Router} from '@angular/router';
@@ -35,7 +36,7 @@ export class ThemNguoiDungComponent implements OnInit {
       Ten: ['', Validators.required],
       Email: ['', [Validators.required, this.gmailValidator,EmailValidator] ] ,
       Password: ['', Validators.required],
-      ConfirmPassword: ['', [Validators.required]],
+      ConfirmPassword: ['', [Validators.required, RxwebValidators.compare({fieldName:'Password' })]],
       NgaySinh: ['', [Validators.required,this.ngaySinhValidator]],
       GioiTinh: [true],
       DiaChi: [''],
@@ -52,7 +53,7 @@ export class ThemNguoiDungComponent implements OnInit {
     this.userManagerService.add(this.formAddUser.value).subscribe(
       result => {
         console.log(result);
-        if (+result['Code'] === 200) {
+        if (result['IsSuccess'] === true) {
             this.sharingService.notifInfo('Thêm người dùng thành công');
             this.router.navigate(['/nguoi-dung']);
         } else {
