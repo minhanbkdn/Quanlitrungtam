@@ -1,5 +1,60 @@
 <div class="panel-header panel-header-sm">
-  <h1 class="text-center" style="color: white">
-    danh-sach-phan-quyen works!
-  </h1>
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Bộ lọc</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12 pr-1">
+                                <div class="form-group">
+                                    <label>Nhóm tài khoản</label>
+                                    <select class="form-control" name="Group" (change)="getPermission()" [(ngModel)]="idGroup">
+                                        <option [selected]="idGroup === group.Id"
+                                                *ngFor="let group of groups" [value]="group.Id">
+                                            {{group.TenGroup}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div class="table-result" id="table-result">
+                            <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let manHinh of cacManHinh">
+                                <table class="table table-striped table-bordered jambo_table">
+                                    <thead>
+                                    <tr>
+                                        <th colspan="2" class="text-center">{{manHinh.NameScreen}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="area-screen">
+                                    <tr *ngFor="let chucNang of manHinh.CacPermission">
+                                        <td>{{chucNang.TenChucNang}}</td>
+                                        <td class="text-center middle div-checkbox">
+                                            <input type="checkbox" class="js-switch is-enable"
+                                                   [(ngModel)]="chucNang.IsEnable" [checked]="chucNang.IsEnable" (change)="changePermission(chucNang.Id)"/>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
